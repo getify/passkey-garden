@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+site-passkey.garden/scripts/
+site-passkey.garden/web/js/external/
+site-passkey.garden/web/robots.txt
+site-passkey.garden/web/sitemap.xml

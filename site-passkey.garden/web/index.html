@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Passkey Garden</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="images/logo.svg">
+<meta name="keywords" content="authentication, login, passkey, password, biometric, face ID, touch ID, unlock">
+<meta itemprop="name" content="Passkey Garden">
+<meta itemprop="description" content="Explore the branding and UX of biometric passkey logins and learn how to make users of your site/app love passkeys over passwords.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Passkey Garden">
+<meta name="twitter:description" content="Explore the branding and UX of biometric passkey logins and learn how to make users of your site/app love passkeys over passwords.">
+<meta name="title" property="og:title" content="Passkey Garden">
+<meta name="description" property="og:description" content="Explore the branding and UX of biometric passkey logins and learn how to make users of your site/app love passkeys over passwords.">
+<meta name="url" property="og:url" content="https://passkey.garden/">
+<meta name="site_name" property="og:site_name" content="Passkey Garden">
+<meta name="type" property="og:type" content="website">
+</head>
+<body class="home icon-a color-black-white size-2">
+
+<header>
+	<h1>Passkey Garden</h1>
+	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu"
+	title="Navigation">☰</button>
+</header>
+
+<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true"
+aria-expanded="false">
+	<ul>
+		<li><a href="/">Garden (Home)</a></li>
+		<li><a href="/try-passkeys">Try Passkeys!</a></li>
+		<li><a href="/more#what-is-this-garden">What is this?</a></li>
+		<li><a href="/more#what-are-passkeys">Passkeys?</a></li>
+		<li><a href="/more">More Questions?</a></li>
+		<li><a href="https://github.com/getify/passkey-garden" target="_blank">On Github...</a></li>
+	</ul>
+
+	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
+	aria-controls="nav-menu" title="Close Navigation">✖</button>
+</nav>
+
+<main>
+<div id="page">
+
+<div class="page-width">
+	<h2>Welcome!</h2>
+
+	<p>
+		Please enjoy this <a href="/more#what-is-this-garden">peaceful exploration</a>
+		of <a href="/more#what-are-passkeys">passkey</a> branding and user experience (UX).
+	</p>
+	<p>
+		To pick a passkey register/login button that works best, try out different
+		icons, color schemes, sizes, and supporting text.
+	</p>
+	<p>
+		You can also upload -- locally in your browser -- other .SVG icons to
+		evaluate their legibility/usability under these various conditions. Maybe
+		your design will end up being the one we all pick to standardize on!
+	</p>
+
+	<hr>
+
+	<div id="controls">
+		<select id="select-icon" rel="js-select-icon" aria-label="Select from various candidates for passkey icon" aria-controls="styled-buttons">
+			<option value="icon-a">Icon A</option>
+			<option value="icon-b">Icon B</option>
+			<option value="icon-c">Icon C</option>
+			<option value="icon-d">Icon D</option>
+			<option value="icon-e">Icon E</option>
+			<option value="icon-f">Icon F</option>
+			<option value="icon-streamline-fido">Streamline's FIDO</option>
+			<option value="icon-custom">Upload SVG</option>
+		</select>
+		<select rel="js-select-color" aria-label="Select from various color themes for buttons" aria-controls="styled-buttons">
+			<option value="color-black-white">Black & White</option>
+			<option value="color-lavendar-white">Lavender & White</option>
+			<option value="color-coral-white">Coral & White</option>
+			<option value="color-bronze-white">Bronze & White</option>
+			<option value="color-grays">Grays</option>
+			<option value="color-purples">Purples</option>
+			<option value="color-blues">Blues</option>
+			<option value="color-greens">Greens</option>
+		</select>
+		<select rel="js-select-size" aria-label="Select from various sizes for buttons" aria-controls="styled-buttons">
+			<option value="size-1">Size 1</option>
+			<option value="size-2" selected>Size 2</option>
+			<option value="size-3">Size 3</option>
+			<option value="size-4">Size 4</option>
+		</select>
+		<select rel="js-select-text" aria-label="Select from various text to append to buttons (after 'Register' or 'Login')" aria-controls="styled-buttons">
+			<option value="">--Extra Button Text--</option>
+			<option value="(Passkey)">... (Passkey)</option>
+			<option value="(Biometric)">... (Biometric)</option>
+			<option value="(Trusted Device)">... (Trusted Device)</option>
+		</select>
+	</div>
+	<div rel="js-upload-instructions" class="hidden">
+		<hr>
+		<p>
+			To upload an icon, make sure it's a single-color SVG, transparent
+			background, and square aspect ratio (any size is fine). For best
+			results, also make sure it's solid black color (<code>#000</code>),
+			and that it has a proper <code>width</code>, <code>height</code>,
+			and <code>viewbox</code> attributes defined. Check out
+			<a href="/images/icon-a.svg" target="_blank">icon-a.svg</a> for an
+			example of compatible file format/contents to upload.
+		</p>
+		<p>
+			<button type="button" id="start-upload-btn" class="icon-text-btn upload" rel="js-start-upload-btn">
+			pick .svg file</button>
+			<span id="upload-preview-img" rel="js-upload-preview-img" class="hidden">
+			</span>
+		</p>
+	</div>
+</div>
+
+<div id="styled-buttons" rel="js-styled-buttons" aria-live="polite">
+	<div class="button-set light-mode">
+		<button type="button" class="button-1" title="Register">
+			<u>Register</u>
+		</button>
+		<button type="button" class="button-1" title="Login">
+			<u>Login</u>
+		</button>
+	</div>
+	<div class="button-set dark-mode">
+		<button type="button" class="button-1" title="Register">
+			<u>Register</u>
+		</button>
+		<button type="button" class="button-1" title="Login">
+			<u>Login</u>
+		</button>
+	</div>
+
+	<b><!-- artificial flex column break --></b>
+
+	<div class="button-set light-mode">
+		<label title="Register">
+			<i></i>
+			<button type="button" class="button-2"><u>Register</u></button>
+		</label>
+		<label title="Login">
+			<i></i>
+			<button type="button" class="button-2"><u>Login</u></button>
+		</label>
+	</div>
+	<div class="button-set dark-mode">
+		<label title="Register">
+			<i></i>
+			<button type="button" class="button-2"><u>Register</u></button>
+		</label>
+		<label title="Login">
+			<i></i>
+			<button type="button" class="button-2"><u>Login</u></button>
+		</label>
+	</div>
+
+	<b><!-- artificial flex column break --></b>
+
+	<div class="button-set light-mode">
+		<label title="Register">
+			<button type="button" class="button-3"></button>
+			<u>Register</u>
+		</label>
+		<label title="Login">
+			<button type="button" class="button-3"></button>
+			<u>Login</u>
+		</label>
+	</div>
+	<div class="button-set dark-mode">
+		<label title="Register">
+			<button type="button" class="button-3"></button>
+			<u>Register</u>
+		</label>
+		<label title="Login">
+			<button type="button" class="button-3"></button>
+			<u>Login</u>
+		</label>
+	</div>
+</div>
+
+<footer class="page-width">&copy; 2025 Passkey Garden, Kyle Simpson</footer>
+
+</div>
+</main>
+
+<div id="drawer" rel="js-drawer-container" class="hidden">
+	<div id="drawer-content">
+		<div id="button-preview" rel="js-drawer-button-preview"></div>
+		<div id="drawer-buttons" rel="js-drawer-buttons">
+			<button type="button" class="icon-text-btn copy"
+			rel="js-copy-html-css-btn" title="Copy HTML and inline CSS">
+			HTML/CSS</button>
+
+			<button type="button" class="icon-text-btn download"
+			rel="js-download-zip-btn" title="Download .zip of HTML/CSS/image files">
+			.ZIP</button>
+
+			<button type="button" class="icon-text-btn passkey" rel="js-try-passkeys-btn">
+			Try Passkeys</button>
+		</div>
+	</div>
+
+	<button type="button" id="close-drawer-btn"
+	rel="js-close-drawer-btn" aria-controls="drawer"
+	title="Close Button Actions">✖</button>
+</div>
+
+</body>
+<script type="module" src="/js/home.js"></script>
+</html>

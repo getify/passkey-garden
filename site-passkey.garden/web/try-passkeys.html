@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Passkey Garden | Try Passkeys</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="images/logo.svg">
+<meta name="keywords" content="authentication, login, passkey, password, biometric, face ID, touch ID, unlock">
+<meta itemprop="name" content="Passkey Garden: Try Passkeys">
+<meta itemprop="description" content="Try out passkeys for yourself in this live demo.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Passkey Garden: Try Passkeys">
+<meta name="twitter:description" content="Try out passkeys for yourself in this live demo.">
+<meta name="title" property="og:title" content="Passkey Garden: Try Passkeys">
+<meta name="description" property="og:description" content="Try out passkeys for yourself in this live demo.">
+<meta name="url" property="og:url" content="https://passkey.garden/try-passkeys">
+<meta name="site_name" property="og:site_name" content="Passkey Garden: Try Passkeys">
+<meta name="type" property="og:type" content="website">
+</head>
+<body>
+<header>
+	<h1>Passkey Garden</h1>
+	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu" title="Navigation">☰</button>
+</header>
+
+<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true" aria-expanded="false">
+	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn" aria-controls="nav-menu" title="Close Navigation">✖</button>
+	<ul>
+		<li><a href="/">Garden (Home)</a></li>
+		<li><a href="/try-passkeys">Try Passkeys!</a></li>
+		<li><a href="/more#what-is-this-garden">What is this?</a></li>
+		<li><a href="/more#what-are-passkeys">Passkeys?</a></li>
+		<li><a href="/more">More Questions?</a></li>
+		<li><a href="https://github.com/getify/passkey-garden" target="_blank">On Github...</a></li>
+	</ul>
+</nav>
+
+<main>
+<div id="page" class="page-width">
+
+<h2>Try out passkeys here</h2>
+
+<p rel="js-webauthn-support-notice" class="hidden">
+	<strong>Unfortunately, it seems your browser does not support passkeys.</strong>
+</p>
+<p>
+	This page allows you to try out "registration" and "login" actions
+	<a href="/more#what-are-passkeys">with passkeys</a>, as if you were
+	on a site/app that actually supports such options.
+</p>
+<p>
+	However, we <strong>DO NOT</strong> save or store your information, in
+	anyway -- not in this browser, nor on our server. Zero, seriously.
+</p>
+<details>
+	<summary>Cleanup Old Passkeys?</summary>
+
+	<p>
+		If you register one or more passkeys here, the only thing leftover
+		once you're done is that your device (or wallet/password manager)
+		will have those passkey entries stored.
+	</p>
+	<p>
+		You <em>may</em> want to delete those entries after you're done here,
+		as they're just clutter and will never do anything useful for this
+		site (or anywhere else, obviously).
+	</p>
+	<p>
+		But that's entirely up to you!
+	</p>
+</details>
+
+<br>
+
+<fieldset>
+	<legend>Register New Passkey</legend>
+	<p>
+		<label>
+			Account:
+			<input type="text" rel="js-register-name"
+			placeholder="(first name, username, etc)" size="22">
+		</label>
+	</p>
+	<p>
+		<button type="button" class="try-passkeys-btn" rel="js-register-btn" disabled>
+		Register (Passkey)</button>
+	</p>
+	<p class="register-results" rel="js-register-results"></p>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>Login (Detect Existing Passkey)</legend>
+	<p>
+		<button type="button" class="try-passkeys-btn" rel="js-login-1-btn">
+		Login (Passkey)</button>
+	</p>
+	<p rel="js-login-1-results" class="hidden"></p>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>Login (Pick Existing Passkey)</legend>
+	<p rel="js-login-2-autofill-support-notice" class="hidden">
+		<strong>NOTE:</strong> It seems this browser doesn't support the autofill
+		of passkey credentials, so you'll have to provide the User ID manually.
+	</p>
+	<p>
+		<label>
+			User ID:
+			<input type="text" rel="js-login-2-user-id"
+			autocomplete="username webauthn" placeholder="(enter user ID)" size="22">
+		</label>
+	</p>
+	<p>
+		<button type="button" class="try-passkeys-btn" rel="js-login-2-btn" disabled>
+		Login (Passkey)</button>
+	</p>
+	<p rel="js-login-2-results" class="hidden"></p>
+</fieldset>
+
+<p>
+	<strong>NOTE:</strong> This page uses the
+	<a href="https://github.com/mylofi/webauthn-local-client" target="_blank">
+	WebAuthn-Local-Client library</a> to interact with passkeys.
+</p>
+
+<footer>&copy; 2025 Passkey Garden, Kyle Simpson</footer>
+
+</div>
+</main>
+
+</body>
+<script type="module" src="/js/try-passkeys.js"></script>
+</html>

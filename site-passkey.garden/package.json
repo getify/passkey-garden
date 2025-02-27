@@ -1,0 +1,21 @@
+{
+	"name": "passkey-garden",
+	"version": "0.0.2025-02-27",
+	"scripts": {
+		"build": "scripts/build-resources",
+		"clean": "scripts/clean-resources",
+		"deploy": "scripts/deploy"
+	},
+	"dependencies": {
+		"@getify/node-static-alias": "latest",
+		"@lo-fi/webauthn-local-client": "~0.3000.0",
+		"client-zip": "~2.4.6"
+	},
+	"devDependencies": {
+		"csso": "~5.0.5",
+		"html-minifier": "~4.0.0",
+		"micromatch": "~4.0.8",
+		"recursive-readdir-sync": "~1.0.6",
+		"terser": "~5.39.0"
+	}
+}
