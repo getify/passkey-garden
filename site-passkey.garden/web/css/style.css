@@ -145,7 +145,7 @@ button {
 input::placeholder,
 textarea::placeholder {
 	color: var(--site-highlight-color);
-	opacity: 0.4;
+	opacity: 0.6;
 }
 button:focus,
 input:focus,

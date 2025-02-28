@@ -9,6 +9,7 @@ var titleEls;
 var previewMarkup;
 var previewExport;
 var iconCache = {};
+var subjectBtn;
 
 
 if (document.readyState == "loading") {
@@ -36,6 +37,8 @@ function init() {
 
 async function openDrawer(btnEl) {
 	if (btnEl != null) {
+		subjectBtn = btnEl;
+
 		let btnClasses = [ ...btnEl.classList, ];
 		let bodyClasses = [ ...document.body.classList, ];
 
@@ -272,20 +275,20 @@ label:has(.passkey-button-3) {
 
 		let btnMarkup = (
 			selectedBtnType == "button-1" ? (`
-    <button type="button" class="passkey-button-1" title="${selectedText}">
+    <button type="button" class="passkey-button-1" aria-label="Click to ${selectedText}">
         ${selectedText}
     </button>
         `).trim() :
 
 			selectedBtnType == "button-2" ? (`
-    <label title="${selectedText}">
-        <i></i>
+    <label aria-label="Click to ${selectedText}">
+        <i role="presentation"></i>
         <button type="button" class="passkey-button-2">${selectedText}</button>
     </label>
         `).trim() :
 
 			selectedBtnType == "button-3" ? (`
-    <label title="${selectedText}">
+    <label aria-label="Click to ${selectedText}">
         <button type="button" class="passkey-button-3"></button>
         ${selectedText}
     </label>
@@ -297,6 +300,7 @@ label:has(.passkey-button-3) {
 		previewMarkup = (`
 <style>
 #button-container {
+    box-sizing: border-box;
     font-family: ${btnFont ?? "inherit"};
     background-color: ${selectedModeBackground ?? "inherit"};
     text-align: center;
@@ -331,6 +335,7 @@ ${btnCSS}
 <link rel="stylesheet" href="./passkey-button.css">
 <style>
 #button-container {
+    box-sizing: border-box;
     font-family: ${btnFont ?? "inherit"};
     background-color: ${selectedModeBackground ?? "inherit"};
     text-align: center;
@@ -349,6 +354,10 @@ ${btnCSS}
 
 		drawerButtonPreviewEl.innerHTML = previewMarkup;
 		drawerEl.classList.remove("hidden");
+		drawerEl.setAttribute("aria-expanded","true");
+		drawerEl.removeAttribute("aria-hidden");
+
+		drawerButtonPreviewEl.querySelector("button").focus();
 
 		document.addEventListener("click",clickHideDrawer,true);
 		document.addEventListener("keydown",onDrawerKey,true);
@@ -391,9 +400,17 @@ function closeDrawer() {
 	drawerButtonPreviewEl.innerHTML = "";
 	previewMarkup = previewExport = null;
 	drawerEl.classList.add("hidden");
+	drawerEl.setAttribute("aria-expanded","false");
+	drawerEl.setAttribute("aria-hidden","true");
 
 	document.removeEventListener("click",clickHideDrawer,true);
 	document.removeEventListener("keydown",onDrawerKey,true);
+
+	document.activeElement?.blur();
+	if (subjectBtn != null) {
+		subjectBtn.focus();
+		subjectBtn = null;
+	}
 }
 
 function onDrawerButtonClick(evt) {

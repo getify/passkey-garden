@@ -83,10 +83,10 @@ function onChangeText(evt) {
 		document.body.classList.add("append-text");
 		for (let titleEl of titleEls) {
 			if (/register/i.test(titleEl.title)) {
-				titleEl.title = `Register ${selectTextEl.value}`;
+				titleEl.title = titleEl.title.replace(/^Register(?: \(.+?\))?/i,`Register ${selectTextEl.value}`);
 			}
 			else if (/login/i.test(titleEl.title)) {
-				titleEl.title = `Login ${selectTextEl.value}`;
+				titleEl.title = titleEl.title.replace(/^Login(?: \(.+?\))?/i,`Login ${selectTextEl.value}`);
 			}
 		}
 	}
@@ -95,10 +95,10 @@ function onChangeText(evt) {
 		document.body.classList.remove("append-text");
 		for (let titleEl of titleEls) {
 			if (/register/i.test(titleEl.title)) {
-				titleEl.title = "Register";
+				titleEl.title = titleEl.title.replace(/^Register(?: \(.+?\))?/i,"Register");
 			}
 			else if (/login/i.test(titleEl.title)) {
-				titleEl.title = "Login";
+				titleEl.title = titleEl.title.replace(/^Login(?: \(.+?\))?/i,"Login");
 			}
 		}
 	}

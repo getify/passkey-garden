@@ -18,7 +18,7 @@ var registerResultsEl;
 var login1Btn;
 var login1ResultsEl;
 var login2AutofillNoticeEl;
-var login2UserIDEl;
+var login2AccountIDEl;
 var login2Btn;
 var login2ResultsEl;
 
@@ -44,35 +44,35 @@ function init() {
 	login1Btn = document.querySelector("[rel*=js-login-1-btn]");
 	login1ResultsEl = document.querySelector("[rel*=js-login-1-results]");
 	login2AutofillNoticeEl = document.querySelector("[rel*=js-login-2-autofill-support-notice]");
-	login2UserIDEl = document.querySelector("[rel*=js-login-2-user-id]");
+	login2AccountIDEl = document.querySelector("[rel*=js-login-2-account-id]");
 	login2Btn = document.querySelector("[rel*=js-login-2-btn]");
 	login2ResultsEl = document.querySelector("[rel*=js-login-2-results]");
 
 	if (!supportsWebAuthn) {
 		webauthnSupportNoticeEl.classList.remove("hidden");
 		registerNameEl.disabled = registerBtn.disabled = login1Btn.disabled =
-			login2UserIDEl.disabled = login2Btn.disabled = true;
+			login2AccountIDEl.disabled = login2Btn.disabled = true;
 	}
 	else {
 		if (!supportsConditionalMediation) {
 			login2AutofillNoticeEl.classList.remove("hidden");
 		}
 
-		registerResultsEl.addEventListener("click",onClickCopyUserID,false);
+		registerResultsEl.addEventListener("click",onClickCopyAccountID,false);
 		registerNameEl.addEventListener("input",onInputRegisterName,false);
 		registerNameEl.addEventListener("keydown",evt => onEnterSubmit(evt,registerBtn));
 		registerBtn.addEventListener("click",onRegister,false);
 		login1Btn.addEventListener("click",onDetectLogin,false);
-		login2UserIDEl.addEventListener("input",onInputLogin2UserID,false);
-		login2UserIDEl.addEventListener("keydown",evt => onEnterSubmit(evt,login2Btn));
+		login2AccountIDEl.addEventListener("input",onInputLogin2AccountID,false);
+		login2AccountIDEl.addEventListener("keydown",evt => onEnterSubmit(evt,login2Btn));
 		login2Btn.addEventListener("click",onProvideLogin,false);
 		startAutofill().catch(console.log);
 	}
 }
 
-function onClickCopyUserID(evt) {
+function onClickCopyAccountID(evt) {
 	if (evt.target.matches(".icon-only-btn.copy")) {
-		copyToClipboard(evt.target.dataset.userId);
+		copyToClipboard(evt.target.dataset.accountId);
 	}
 }
 
@@ -88,8 +88,8 @@ async function onRegister() {
 		return;
 	}
 	var name = registerNameEl.value.trim().slice(0,25);
-	var userID = new Uint8Array(6);
-	window.crypto.getRandomValues(userID);
+	var accountID = new Uint8Array(6);
+	window.crypto.getRandomValues(accountID);
 
 	var regOptions = regDefaults({
 		authenticatorSelection: {
@@ -100,24 +100,25 @@ async function onRegister() {
 		user: {
 			name,
 			displayName: name,
-			id: userID,
+			id: accountID,
 		},
 	});
 	try {
 		let regResult = await register(regOptions);
 
 		if (regResult.response != null) {
-			let userIDStr = toBase64String(userID);
-			registeredCredentials[userIDStr] = regResult.response.credentialID;
+			let accountIDStr = toBase64String(accountID);
+			registeredCredentials[accountIDStr] = regResult.response.credentialID;
 
 			registerNameEl.value = "";
 			onInputRegisterName();
 			registerResultsEl.classList.remove("hidden");
+			registerResultsEl.classList.add("register-results");
 			registerResultsEl.innerHTML = (
 				`Registered: <strong>${name}</strong>
-				(User ID: <strong>${userIDStr}</strong>)
-				<button type="button" class="icon-only-btn copy" rel="js-copy-user-id-btn"
-				data-user-id="${userIDStr}" title="Copy User ID">Copy User ID</button>
+				(Account ID: <strong>${accountIDStr}</strong>)
+				<button type="button" class="icon-only-btn copy" rel="js-copy-account-id-btn"
+				data-account-id="${accountIDStr}" title="Copy Account ID">Copy Account ID</button>
 				`
 			);
 			return;
@@ -127,7 +128,7 @@ async function onRegister() {
 	}
 	catch (err) {
 		console.log(err);
-		registerResultsEl.classList.remove("hidden");
+		registerResultsEl.classList.remove("hidden","register-results");
 		registerResultsEl.innerHTML = (
 			"Sorry, something went wrong. Please try again."
 		);
@@ -150,15 +151,15 @@ async function onDetectLogin() {
 		let authResult = await auth(authOptions);
 
 		if (authResult.response != null) {
-			let userIDStr = (
-				authResult.response.userID != null ?
-					toBase64String(authResult.response.userID) :
+			let accountIDStr = (
+				authResult.response.accountID != null ?
+					toBase64String(authResult.response.accountID) :
 
 					null
 			);
 			login1ResultsEl.classList.remove("hidden");
 			login1ResultsEl.innerHTML = (
-				`Passkey login${userIDStr != null ? ` (User ID: ${userIDStr})` : ""} successful!`
+				`Passkey login${accountIDStr != null ? ` (Account ID: ${accountIDStr})` : ""} successful!`
 			);
 			return;
 		}
@@ -178,8 +179,8 @@ async function onDetectLogin() {
 	}
 }
 
-function onInputLogin2UserID() {
-	login2Btn.disabled = (login2UserIDEl.value == "");
+function onInputLogin2AccountID() {
+	login2Btn.disabled = (login2AccountIDEl.value == "");
 }
 
 async function startAutofill() {
@@ -188,7 +189,7 @@ async function startAutofill() {
 	}
 
 	resetAutofillCancelToken();
-	login2UserIDEl.setAttribute("placeholder","(enter user ID, or autofill)");
+	login2AccountIDEl.setAttribute("placeholder","(enter or autofill ID)");
 
 	autofillCancelToken = new AbortController();
 	var authOptions = authDefaults({
@@ -200,22 +201,22 @@ async function startAutofill() {
 		let authResult = await auth(authOptions);
 		if (authResult != null) {
 			await onAuthAutofilled(authResult);
-			let userIDStr = (
-				authResult.response.userID != null ?
-					toBase64String(authResult.response.userID) :
+			let accountIDStr = (
+				authResult.response.accountID != null ?
+					toBase64String(authResult.response.accountID) :
 
 					null
 			);
 			login2ResultsEl.classList.remove("hidden");
 			login2ResultsEl.innerHTML = (
-				`Passkey login${userIDStr != null ? ` (User ID: ${userIDStr})` : ""} successful!`
+				`Passkey login${accountIDStr != null ? ` (Account ID: ${accountIDStr})` : ""} successful!`
 			);
 			startAutofill().catch(console.log);
 			return;
 		}
 
 		// note: if we get here, the operation was silently canceled
-		login2UserIDEl.setAttribute("placeholder","(enter user ID)");
+		login2AccountIDEl.setAttribute("placeholder","(enter ID)");
 	}
 	catch (err) {
 		console.log(err);
@@ -231,32 +232,32 @@ async function startAutofill() {
 async function onAuthAutofilled(authResult) {
 	resetAutofillCancelToken();
 
-	// show the User ID in the input box, for UX purposes
-	if (authResult && authResult.response && authResult.response.userID) {
+	// show the Account ID in the input box, for UX purposes
+	if (authResult && authResult.response && authResult.response.accountID) {
 		login2Btn.classList.add("hidden");
-		login2UserIDEl.readonly = true;
-		login2UserIDEl.value = toBase64String(authResult.response.userID);
-		login2UserIDEl.select();
+		login2AccountIDEl.readonly = true;
+		login2AccountIDEl.value = toBase64String(authResult.response.accountID);
+		login2AccountIDEl.select();
 
-		// brief pause to ensure user can see their User ID
+		// brief pause to ensure user can see their Account ID
 		// filled in
 		await new Promise(res => setTimeout(res,500));
 
 		login2Btn.classList.remove("hidden");
-		login2UserIDEl.readonly = false;
-		login2UserIDEl.value = "";
+		login2AccountIDEl.readonly = false;
+		login2AccountIDEl.value = "";
 		clearSelection();
 	}
 }
 
 async function onProvideLogin() {
-	var userID = login2UserIDEl.value.trim().slice(0,25);
+	var accountID = login2AccountIDEl.value.trim().slice(0,25);
 
-	// not previously recorded user ID (in memory only!) for a
+	// not previously recorded Account ID (in memory only!) for a
 	// registered credential?
-	if (!(userID in registeredCredentials)) {
+	if (!(accountID in registeredCredentials)) {
 		login2ResultsEl.classList.remove("hidden");
-		login2ResultsEl.innerHTML = "Unknown User ID, likely because it wasn't registered since this page was loaded. Please register a new account on this page, and then try again.";
+		login2ResultsEl.innerHTML = "Unknown Account ID, likely because it wasn't registered since this page was loaded. Please register a new account on this page, and then try again.";
 		return;
 	}
 
@@ -267,7 +268,7 @@ async function onProvideLogin() {
 		userVerification: "required",
 		allowCredentials: [{
 			type: "public-key",
-			id: registeredCredentials[userID],
+			id: registeredCredentials[accountID],
 		}],
 		signal: autofillCancelToken.signal,
 	});
@@ -275,18 +276,18 @@ async function onProvideLogin() {
 		let authResult = await auth(authOptions);
 		// console.log("authResult",authResult);
 		if (authResult != null) {
-			let userIDStr = (
-				authResult.response.userID != null ?
-					toBase64String(authResult.response.userID) :
+			let accountIDStr = (
+				authResult.response.accountID != null ?
+					toBase64String(authResult.response.accountID) :
 
 					null
 			);
 			login2ResultsEl.classList.remove("hidden");
 			login2ResultsEl.innerHTML = (
-				`Passkey login${userIDStr != null ? ` (User ID: ${userIDStr})` : ""} successful!`
+				`Passkey login${accountIDStr != null ? ` (Account ID: ${accountIDStr})` : ""} successful!`
 			);
-			login2UserIDEl.value = "";
-			onInputLogin2UserID();
+			login2AccountIDEl.value = "";
+			onInputLogin2AccountID();
 			return;
 		}
 

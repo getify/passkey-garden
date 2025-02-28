@@ -19,25 +19,39 @@
 <meta name="type" property="og:type" content="website">
 </head>
 <body>
+
 <header>
 	<h1>Passkey Garden</h1>
-	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu" title="Navigation">☰</button>
+	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu"
+	title="Open Navigation" aria-label="Click to open site navigation menu">
+		☰
+	</button>
 </header>
 
-<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true" aria-expanded="false">
-	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn" aria-controls="nav-menu" title="Close Navigation">✖</button>
+<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true"
+aria-expanded="false">
+	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
+	aria-controls="nav-menu" title="Close Navigation" aria-label="Click to close
+	site navigation menu">✖</button>
+
 	<ul>
 		<li><a href="/">Garden (Home)</a></li>
-		<li><a href="/try-passkeys">Try Passkeys!</a></li>
+		<li>
+			<a href="/try-passkeys" aria="Navigate to a live demo of passkeys">
+				Try Passkeys!
+			</a>
+		</li>
 		<li><a href="/more#what-is-this-garden">What is this?</a></li>
 		<li><a href="/more#what-are-passkeys">Passkeys?</a></li>
 		<li><a href="/more">More Questions?</a></li>
-		<li><a href="https://github.com/getify/passkey-garden" target="_blank">On Github...</a></li>
+		<li>
+			<a href="https://github.com/getify/passkey-garden" target="_blank"
+			rel="noopener">On Github...</a>
+		</li>
 	</ul>
 </nav>
 
-<main>
-<div id="page" class="page-width">
+<main><div id="page" class="page-width">
 
 <h2>Try out passkeys here</h2>
 
@@ -76,17 +90,21 @@
 <fieldset>
 	<legend>Register New Passkey</legend>
 	<p>
-		<label>
-			Account:
+		<label aria-label="Name or label for new account">
+			Name:
 			<input type="text" rel="js-register-name"
 			placeholder="(first name, username, etc)" size="22">
 		</label>
 	</p>
 	<p>
-		<button type="button" class="try-passkeys-btn" rel="js-register-btn" disabled>
-		Register (Passkey)</button>
+		<button type="button" class="try-passkeys-btn" rel="js-register-btn"
+		aria-label="Click to register new account with passkey"
+		title="Register (Passkey)" disabled>
+			Register (Passkey)
+		</button>
 	</p>
-	<p class="register-results" rel="js-register-results"></p>
+	<p rel="js-register-results" class="register-results hidden" aria-live="polite">
+	</p>
 </fieldset>
 
 <br>
@@ -94,32 +112,39 @@
 <fieldset>
 	<legend>Login (Detect Existing Passkey)</legend>
 	<p>
-		<button type="button" class="try-passkeys-btn" rel="js-login-1-btn">
-		Login (Passkey)</button>
+		<button type="button" class="try-passkeys-btn" rel="js-login-1-btn"
+		aria-label="Click to detect an existing passkey to login"
+		title="Login (Passkey)">
+			Login (Passkey)
+		</button>
 	</p>
-	<p rel="js-login-1-results" class="hidden"></p>
+	<p rel="js-login-1-results" class="hidden" aria-live="polite"></p>
 </fieldset>
 
 <br>
 
 <fieldset>
 	<legend>Login (Pick Existing Passkey)</legend>
-	<p rel="js-login-2-autofill-support-notice" class="hidden">
+	<p rel="js-login-2-autofill-support-notice" class="hidden" aria-live="polite">
 		<strong>NOTE:</strong> It seems this browser doesn't support the autofill
-		of passkey credentials, so you'll have to provide the User ID manually.
+		of passkey credentials, so you'll have to provide the Account ID manually.
 	</p>
 	<p>
-		<label>
-			User ID:
-			<input type="text" rel="js-login-2-user-id"
-			autocomplete="username webauthn" placeholder="(enter user ID)" size="22">
+		<label aria-label="Provide or autofill-pick an Account ID">
+			Account ID:
+			<input type="text" rel="js-login-2-account-id"
+			autocomplete="username webauthn" placeholder="(enter ID)"
+			size="22">
 		</label>
 	</p>
 	<p>
-		<button type="button" class="try-passkeys-btn" rel="js-login-2-btn" disabled>
-		Login (Passkey)</button>
+		<button type="button" class="try-passkeys-btn" rel="js-login-2-btn"
+		aria-label="Click to login with provided account's passkey"
+		title="Login (Passkey)" disabled>
+			Login (Passkey)
+		</button>
 	</p>
-	<p rel="js-login-2-results" class="hidden"></p>
+	<p rel="js-login-2-results" class="hidden" aria-live="polite"></p>
 </fieldset>
 
 <p>
@@ -130,8 +155,7 @@
 
 <footer>&copy; 2025 Passkey Garden, Kyle Simpson</footer>
 
-</div>
-</main>
+</div></main>
 
 </body>
 <script type="module" src="/js/try-passkeys.js"></script>

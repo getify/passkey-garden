@@ -1,6 +1,6 @@
 # Passkey Garden
 
-This is peaceful exploration of passkey branding and user experience (UX).
+This is a peaceful exploration of passkey branding and user experience (UX).
 
 [Visit the garden](https://passkey.garden) for more.
 

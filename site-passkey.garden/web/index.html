@@ -23,49 +23,61 @@
 <header>
 	<h1>Passkey Garden</h1>
 	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu"
-	title="Navigation">☰</button>
+	title="Open Navigation" aria-label="Click to open site navigation menu">
+		☰
+	</button>
 </header>
 
 <nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true"
 aria-expanded="false">
+	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
+	aria-controls="nav-menu" title="Close Navigation" aria-label="Click to close
+	site navigation menu">✖</button>
+
 	<ul>
 		<li><a href="/">Garden (Home)</a></li>
-		<li><a href="/try-passkeys">Try Passkeys!</a></li>
+		<li>
+			<a href="/try-passkeys" aria="Navigate to a live demo of passkeys">
+				Try Passkeys!
+			</a>
+		</li>
 		<li><a href="/more#what-is-this-garden">What is this?</a></li>
 		<li><a href="/more#what-are-passkeys">Passkeys?</a></li>
 		<li><a href="/more">More Questions?</a></li>
-		<li><a href="https://github.com/getify/passkey-garden" target="_blank">On Github...</a></li>
+		<li>
+			<a href="https://github.com/getify/passkey-garden" target="_blank"
+			rel="noopener">On Github...</a>
+		</li>
 	</ul>
-
-	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
-	aria-controls="nav-menu" title="Close Navigation">✖</button>
 </nav>
 
-<main>
-<div id="page">
+<main><div id="page">
 
 <div class="page-width">
 	<h2>Welcome!</h2>
 
 	<p>
-		Please enjoy this <a href="/more#what-is-this-garden">peaceful exploration</a>
-		of <a href="/more#what-are-passkeys">passkey</a> branding and user experience (UX).
+		Please enjoy <a href="/more#what-is-this-garden">this peaceful garden
+		exploration</a> into <a href="/more#what-are-passkeys">passkey</a> branding
+		and user experience.
 	</p>
 	<p>
 		To pick a passkey register/login button that works best, try out different
 		icons, color schemes, sizes, and supporting text.
 	</p>
 	<p>
-		You can also upload -- locally in your browser -- other .SVG icons to
+		You can also upload -- locally in your browser -- other .svg icons to
 		evaluate their legibility/usability under these various conditions. Maybe
-		your design will end up being the one we all pick to standardize on!
+		your design will end up being the icon we all pick to standardize on!
 	</p>
 
 	<hr>
 
 	<div id="controls">
-		<select id="select-icon" rel="js-select-icon" aria-label="Select from various candidates for passkey icon" aria-controls="styled-buttons">
-			<option value="icon-a">Icon A</option>
+		<select id="select-icon" rel="js-select-icon" title="Icon Candidates"
+		aria-label="Select from various candidates for passkey icon"
+		aria-controls="styled-buttons">
+			<option value="icon-a" selected>Icon A</option>
 			<option value="icon-b">Icon B</option>
 			<option value="icon-c">Icon C</option>
 			<option value="icon-d">Icon D</option>
@@ -74,8 +86,10 @@ aria-expanded="false">
 			<option value="icon-streamline-fido">Streamline's FIDO</option>
 			<option value="icon-custom">Upload SVG</option>
 		</select>
-		<select rel="js-select-color" aria-label="Select from various color themes for buttons" aria-controls="styled-buttons">
-			<option value="color-black-white">Black & White</option>
+		<select rel="js-select-color" title="Color Themes"
+		aria-label="Select from various color themes for buttons"
+		aria-controls="styled-buttons">
+			<option value="color-black-white" selected>Black & White</option>
 			<option value="color-lavendar-white">Lavender & White</option>
 			<option value="color-coral-white">Coral & White</option>
 			<option value="color-bronze-white">Bronze & White</option>
@@ -84,13 +98,17 @@ aria-expanded="false">
 			<option value="color-blues">Blues</option>
 			<option value="color-greens">Greens</option>
 		</select>
-		<select rel="js-select-size" aria-label="Select from various sizes for buttons" aria-controls="styled-buttons">
+		<select rel="js-select-size" title="Button Sizes"
+		aria-label="Select from various sizes for buttons"
+		aria-controls="styled-buttons">
 			<option value="size-1">Size 1</option>
 			<option value="size-2" selected>Size 2</option>
 			<option value="size-3">Size 3</option>
 			<option value="size-4">Size 4</option>
 		</select>
-		<select rel="js-select-text" aria-label="Select from various text to append to buttons (after 'Register' or 'Login')" aria-controls="styled-buttons">
+		<select rel="js-select-text" title="Append Extra Button Text"
+		aria-label="Select from various text to append to buttons (after 'Register'
+		or 'Login')" aria-controls="styled-buttons">
 			<option value="">--Extra Button Text--</option>
 			<option value="(Passkey)">... (Passkey)</option>
 			<option value="(Biometric)">... (Biometric)</option>
@@ -105,11 +123,14 @@ aria-expanded="false">
 			results, also make sure it's solid black color (<code>#000</code>),
 			and that it has a proper <code>width</code>, <code>height</code>,
 			and <code>viewbox</code> attributes defined. Check out
-			<a href="/images/icon-a.svg" target="_blank">icon-a.svg</a> for an
-			example of compatible file format/contents to upload.
+			<a href="/images/icon-a.svg" target="_blank"
+			title="download example icon .svg file" download="icon-a.svg">
+			an example icon file</a> for compatible file format/contents to upload.
 		</p>
 		<p>
-			<button type="button" id="start-upload-btn" class="icon-text-btn upload" rel="js-start-upload-btn">
+			<button type="button" id="start-upload-btn" class="icon-text-btn upload"
+			rel="js-start-upload-btn" aria-label="Upload a custom .svg icon file to
+			the page (only), to preview how it renders in the various buttons below.">
 			pick .svg file</button>
 			<span id="upload-preview-img" rel="js-upload-preview-img" class="hidden">
 			</span>
@@ -119,64 +140,84 @@ aria-expanded="false">
 
 <div id="styled-buttons" rel="js-styled-buttons" aria-live="polite">
 	<div class="button-set light-mode">
-		<button type="button" class="button-1" title="Register">
+		<button type="button" class="button-1" title="Register -- click to preview" aria-controls="drawer"
+		aria-label="Click to open preview of this passkey button variation">
 			<u>Register</u>
 		</button>
-		<button type="button" class="button-1" title="Login">
+		<button type="button" class="button-1" title="Login -- click to preview" aria-controls="drawer"
+		aria-label="Click to open preview of this passkey button variation">
 			<u>Login</u>
 		</button>
 	</div>
 	<div class="button-set dark-mode">
-		<button type="button" class="button-1" title="Register">
+		<button type="button" class="button-1" title="Register -- click to preview" aria-controls="drawer"
+		aria-label="Click to open preview of this passkey button variation">
 			<u>Register</u>
 		</button>
-		<button type="button" class="button-1" title="Login">
+		<button type="button" class="button-1" title="Login -- click to preview" aria-controls="drawer"
+		aria-label="Click to open preview of this passkey button variation">
 			<u>Login</u>
 		</button>
 	</div>
 
-	<b><!-- artificial flex column break --></b>
+	<b aria-hidden="true"><!-- artificial flex column break --></b>
 
 	<div class="button-set light-mode">
-		<label title="Register">
-			<i></i>
-			<button type="button" class="button-2"><u>Register</u></button>
+		<label title="Register -- click to preview">
+			<i role="presentation"></i>
+			<button type="button" class="button-2" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			<u>Register</u></button>
 		</label>
-		<label title="Login">
-			<i></i>
-			<button type="button" class="button-2"><u>Login</u></button>
+		<label title="Login -- click to preview">
+			<i role="presentation"></i>
+			<button type="button" class="button-2" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			<u>Login</u></button>
 		</label>
 	</div>
 	<div class="button-set dark-mode">
-		<label title="Register">
-			<i></i>
-			<button type="button" class="button-2"><u>Register</u></button>
+		<label title="Register -- click to preview">
+			<i role="presentation"></i>
+			<button type="button" class="button-2" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			<u>Register</u></button>
 		</label>
-		<label title="Login">
-			<i></i>
-			<button type="button" class="button-2"><u>Login</u></button>
+		<label title="Login -- click to preview">
+			<i role="presentation"></i>
+			<button type="button" class="button-2" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			<u>Login</u></button>
 		</label>
 	</div>
 
-	<b><!-- artificial flex column break --></b>
+	<b aria-hidden="true"><!-- artificial flex column break --></b>
 
 	<div class="button-set light-mode">
-		<label title="Register">
-			<button type="button" class="button-3"></button>
+		<label title="Register -- click to preview">
+			<button type="button" class="button-3" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			</button>
 			<u>Register</u>
 		</label>
-		<label title="Login">
-			<button type="button" class="button-3"></button>
+		<label title="Login -- click to preview">
+			<button type="button" class="button-3" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			</button>
 			<u>Login</u>
 		</label>
 	</div>
 	<div class="button-set dark-mode">
-		<label title="Register">
-			<button type="button" class="button-3"></button>
+		<label title="Register -- click to preview">
+			<button type="button" class="button-3" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			</button>
 			<u>Register</u>
 		</label>
-		<label title="Login">
-			<button type="button" class="button-3"></button>
+		<label title="Login -- click to preview">
+			<button type="button" class="button-3" aria-controls="drawer"
+			aria-label="Click to open preview of this passkey button variation">
+			</button>
 			<u>Login</u>
 		</label>
 	</div>
@@ -184,29 +225,35 @@ aria-expanded="false">
 
 <footer class="page-width">&copy; 2025 Passkey Garden, Kyle Simpson</footer>
 
-</div>
-</main>
+</div></main>
 
-<div id="drawer" rel="js-drawer-container" class="hidden">
-	<div id="drawer-content">
-		<div id="button-preview" rel="js-drawer-button-preview"></div>
-		<div id="drawer-buttons" rel="js-drawer-buttons">
-			<button type="button" class="icon-text-btn copy"
-			rel="js-copy-html-css-btn" title="Copy HTML and inline CSS">
-			HTML/CSS</button>
-
-			<button type="button" class="icon-text-btn download"
-			rel="js-download-zip-btn" title="Download .zip of HTML/CSS/image files">
-			.ZIP</button>
-
-			<button type="button" class="icon-text-btn passkey" rel="js-try-passkeys-btn">
-			Try Passkeys</button>
-		</div>
-	</div>
-
+<div id="drawer" rel="js-drawer-container" class="hidden" aria-hidden="true"
+aria-expanded="false">
 	<button type="button" id="close-drawer-btn"
 	rel="js-close-drawer-btn" aria-controls="drawer"
-	title="Close Button Actions">✖</button>
+	title="Close Drawer" aria-label="Click to close the button preview drawer">
+	✖</button>
+
+	<div id="drawer-content">
+		<div id="button-preview" rel="js-drawer-button-preview"
+		aria-label="Preview of the currently customized button"></div>
+		<div id="drawer-buttons" rel="js-drawer-buttons">
+			<button type="button" class="icon-text-btn copy"
+			rel="js-copy-html-css-btn" title="Copy HTML and inline CSS/image"
+			aria-label="Click to copy to clipboard the HTML and inline CSS/image for
+			the previewed button" aria-live="polite">HTML/CSS</button>
+
+			<button type="button" class="icon-text-btn download"
+			rel="js-download-zip-btn" title="Download .zip of HTML/CSS/image files"
+			aria-label="Click to download a .zip file containing the exported HTML,
+			CSS, and image files for the previewed button">.ZIP</button>
+
+			<button type="button" class="icon-text-btn passkey"
+			rel="js-try-passkeys-btn" title="Live demo of passkeys"
+			aria-label="Click to navigate to a live demo of passkey registration
+			and login">Try Passkeys</button>
+		</div>
+	</div>
 </div>
 
 </body>

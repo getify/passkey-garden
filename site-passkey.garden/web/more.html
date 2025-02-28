@@ -22,23 +22,36 @@
 
 <header>
 	<h1>Passkey Garden</h1>
-	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu" title="Navigation">☰</button>
+	<button type="button" rel="js-nav-menu-btn" aria-controls="nav-menu"
+	title="Open Navigation" aria-label="Click to open site navigation menu">
+		☰
+	</button>
 </header>
 
-<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true" aria-expanded="false">
-	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn" aria-controls="nav-menu" title="Close Navigation">✖</button>
+<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true"
+aria-expanded="false">
+	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
+	aria-controls="nav-menu" title="Close Navigation" aria-label="Click to close
+	site navigation menu">✖</button>
+
 	<ul>
 		<li><a href="/">Garden (Home)</a></li>
-		<li><a href="/try-passkeys">Try Passkeys!</a></li>
+		<li>
+			<a href="/try-passkeys" aria="Navigate to a live demo of passkeys">
+				Try Passkeys!
+			</a>
+		</li>
 		<li><a href="/more#what-is-this-garden">What is this?</a></li>
 		<li><a href="/more#what-are-passkeys">Passkeys?</a></li>
 		<li><a href="/more">More Questions?</a></li>
-		<li><a href="https://github.com/getify/passkey-garden" target="_blank">On Github...</a></li>
+		<li>
+			<a href="https://github.com/getify/passkey-garden" target="_blank"
+			rel="noopener">On Github...</a>
+		</li>
 	</ul>
 </nav>
 
-<main>
-<div id="page" class="page-width">
+<main><div id="page" class="page-width">
 
 <h2>More questions about this stuff? Read on.</h2>
 
@@ -49,7 +62,8 @@
 			<p>
 				This tool is a simple playground to explore possible improved
 				branding/UX around
-				<a href="https://www.passkeys.com/what-are-passkeys" target="_blank">
+				<a href="https://www.passkeys.com/what-are-passkeys" target="_blank"
+				rel="noopener">
 				biometric passkey (FaceID, TouchID, etc)</a> authentication for web
 				sites/apps.
 			</p>
@@ -72,8 +86,8 @@
 			<p>
 				<strong>Why "Garden"?</strong> Put simply, the style customization
 				experience here is inspired by
-				<a href="https://csszengarden.com/" target="_blank">the design
-				customization of CSS Zen Garden</a>.
+				<a href="https://csszengarden.com/" target="_blank" rel="noopener">
+				the design customization of CSS Zen Garden</a>.
 			</p>
 		</details>
 	</li>
@@ -81,9 +95,9 @@
 		<details id="what-are-passkeys">
 			<summary>What are passkeys?</summary>
 			<p>
-				<a href="https://www.passkeys.com/what-are-passkeys" target="_blank">
-				Passkeys</a> are the next-generation standard for logging
-				in -- no passwords, no hassle.
+				<a href="https://www.passkeys.com/what-are-passkeys" target="_blank"
+				rel="noopener">Passkeys</a> are the next-generation standard for
+				logging in -- no passwords, no hassle.
 			</p>
 			<p>
 				Just like you unlock your device with your face or
@@ -111,9 +125,9 @@
 			</p>
 			<p>
 				Want to learn more? <a href="https://support.apple.com/en-us/102195"
-				target="_blank">Apple on Passkeys</a> |
+				target="_blank" rel="noopener">Apple on Passkeys</a> |
 				<a href="https://support.google.com/chrome/answer/13168025?hl=en&co=GENIE.Platform%3DAndroid"
-				target="_blank">Google on Passkeys</a>
+				target="_blank" rel="noopener">Google on Passkeys</a>
 			</p>
 		</details>
 	</li>
@@ -124,17 +138,17 @@
 			<p>
 				Eh, kinda, but not really. The
 				<a href="https://fidoalliance.org/get-the-passkey-icon/"
-				target="_blank">FIDO Alliance</a> has an icon they claim to be
-				official for passkeys, and indeed it's used (and
+				target="_blank" rel="noopener">FIDO Alliance</a> has an icon they
+				claim to be official for passkeys, and indeed it's used (and
 				remixed/re-interpreted) in
 				<a href="https://www.streamlinehq.com/icons/download/passkey--30000"
-				target="_blank">various
+				target="_blank" rel="noopener">various
 				<img src="/images/streamline-fido-icon.svg" width="30" height="30"
 				align="center"
 				alt="Streamline's interpretation of the FIDO passkey icon"
 				title="Streamline's FIDO Icon"></a>
 				<a href="https://developer.apple.com/assets/elements/icons/passkeys/passkeys-96x96_2x.png"
-				target="_blank">places
+				target="_blank" rel="noopener">places
 				<img src="/images/apple-passkeys-96x96_2x.png" width="30" height="30"
 				align="center"
 				alt="Apple's interpretation of the FIDO passkey icon"
@@ -143,13 +157,12 @@
 			<p>
 				However, FIDO's icon is trademarked, and has some fairly strong
 				guidelines/requirements for its usage. As far as we're concerned,
-				that's not really suitable for widespread adoption, so it's
-				disqualified.
+				that's not best for widespread adoption.
 			</p>
 			<p>
 				Also, we feel design-wise that icon is lacking -- it <em>reads</em>
-				as "my body is the key" -- and that doesn't promote clarity and trust
-				for non-technical folks.
+				as "my body is the key" -- and that doesn't promote the ideal
+				balance of clarity and trust, especially for non-technical folks.
 			</p>
 		</details>
 	</li>
@@ -201,16 +214,47 @@
 				Great question!
 			</p>
 			<p>
-				More info TBA.
+				More info coming soon. But for now, check these resources out:
 			</p>
+			<ul>
+				<li>
+					<a href="https://www.passkeys.com/what-are-passkeys"
+					target="_blank" rel="noopener">Passkeys.com</a>
+				</li>
+				<li>
+					<a href="https://www.passkeycentral.org/home" target="_blank"
+					rel="noopener">Passkey Central</a>
+				</li>
+				<li>
+					<a href="https://passkeys.dev/docs/intro/what-are-passkeys/"
+					target="_blank" rel="noopener">Passkeys.dev</a>
+				</li>
+				<li>
+					<a href="https://webauthn.io/"target="_blank" rel="noopener">
+						WebAuthn.io
+					</a>
+				</li>
+				<li>
+					<a href="https://webauthn.me/"target="_blank" rel="noopener">
+						WebAuthn.me
+					</a>
+				</li>
+				<li>
+					<a href="https://support.apple.com/en-us/102195"
+					target="_blank" rel="noopener">Apple on Passkeys</a>
+				</li>
+				<li>
+					<a href="https://support.google.com/chrome/answer/13168025?hl=en&co=GENIE.Platform%3DAndroid"
+					target="_blank" rel="noopener">Google on Passkeys</a>
+				</li>
+			</ul>
 		</details>
 	</li>
 </ul>
 
 <footer>&copy; 2025 Passkey Garden, Kyle Simpson</footer>
 
-</div>
-</main>
+</div></main>
 
 </body>
 <script type="module" src="/js/more.js"></script>
