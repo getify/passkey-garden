@@ -38,6 +38,9 @@ function clickHideNavMenu(evt) {
 		cancelEvent(evt);
 		closeNavMenu();
 	}
+	else if (evt.target.matches("ul > li > a")) {
+		closeNavMenu();
+	}
 }
 
 function onMenuKey(evt) {

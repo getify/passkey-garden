@@ -13,7 +13,7 @@ body {
 	--site-background-color-2: #c2cfc8;
 	--site-link-color: #23704a;
 	--site-highlight-color: #f58b40;
-	--max-page-width: 50rem;
+	--max-page-width: 60rem;
 
 	display: grid;
 	grid-template-columns: 1fr;
@@ -326,7 +326,7 @@ a:focus-visible {
 	text-decoration-style: dotted;
 }
 
-#controls {
+#controls form {
 	display: flex;
 	flex-flow: row wrap;
 	margin: 1.2rem;
@@ -375,53 +375,24 @@ a:focus-visible {
 }
 
 #styled-buttons {
+	width: 100%;
+}
+.styled-buttons-row {
 	display: flex;
 	flex-flow: row wrap;
+	width: 100%;
+	margin-bottom: 1em;
 }
-#styled-buttons > * {
-	flex: 0 1 auto;
-}
-/* artificial column break */
-#styled-buttons > b {
-	display: block;
-	flex: 0 0 100%;
-	height: 1rem;
-	margin: 0;
-	padding: 0;
-	font-weight: normal;
-	line-height: 0;
-}
-.light-mode {
-	--button-content-color: var(--light-color);
-	--button-background-color: var(--dark-color);
-
-	border: thin solid var(--button-background-color);
-}
-.light-mode .button-1::before,
-.light-mode .button-3::before {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
-}
-.light-mode i:has(+ .button-2) {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
-}
-.dark-mode {
-	--button-content-color: var(--dark-color);
-	--button-background-color: var(--light-color);
-
-	border: thin solid var(--button-content-color);
-}
-.dark-mode .button-1::before,
-.dark-mode .button-3::before {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
-}
-.dark-mode i:has(+ .button-2) {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
+.styled-buttons-row:last-child {
+	margin-bottom: 0;
 }
 .button-set {
 	--button-margin: calc(var(--button-icon-size) * 3);
 
 	display: flex;
 	flex-flow: row wrap;
+	flex-grow: 1;
+	min-width: 50%;
 	gap: calc(var(--button-margin) / 2) var(--button-margin);
 	padding: calc(var(--button-icon-size) * 2);
 	min-width: min-content;
@@ -495,7 +466,6 @@ body.append-text .button-set button + u::after {
 	background-image: var(--icon-url);
 	filter: var(--icon-filter);
 }
-
 .button-set label:has(.button-3) {
 	--solo-button-size: calc(var(--button-height) * 0.8);
 	--solo-button-icon-size: calc(var(--solo-button-size) * 0.7);
@@ -522,6 +492,32 @@ body.append-text .button-set button + u::after {
 	background-repeat: no-repeat;
 	background-image: var(--icon-url);
 	filter: var(--icon-filter);
+}
+.button-set.light-mode {
+	--button-content-color: var(--light-color);
+	--button-background-color: var(--dark-color);
+
+	border: thin solid var(--button-background-color);
+}
+.button-set.light-mode .button-1::before,
+.button-set.light-mode .button-3::before {
+	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
+}
+.button-set.light-mode i:has(+ .button-2) {
+	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
+}
+.button-set.dark-mode {
+	--button-content-color: var(--dark-color);
+	--button-background-color: var(--light-color);
+
+	border: thin solid var(--button-content-color);
+}
+.button-set.dark-mode .button-1::before,
+.button-set.dark-mode .button-3::before {
+	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
+}
+.button-set.dark-mode i:has(+ .button-2) {
+	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
 }
 
 #drawer {
