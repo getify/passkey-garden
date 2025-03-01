@@ -1,4 +1,7 @@
-import { closeNavMenu, } from "./nav.js";
+import {
+	closeNavMenu,
+	cancelEvent,
+} from "./nav.js";
 import {
 	supportsWebAuthn,
 	supportsConditionalMediation,
@@ -336,13 +339,5 @@ function onEnterSubmit(evt,btn) {
 	if (evt.key == "Enter") {
 		cancelEvent(evt);
 		btn.click();
-	}
-}
-
-function cancelEvent(evt) {
-	if (evt != null) {
-		evt.preventDefault();
-		evt.stopImmediatePropagation();
-		evt.stopPropagation();
 	}
 }

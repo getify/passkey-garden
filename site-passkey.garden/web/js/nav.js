@@ -12,7 +12,10 @@ else {
 }
 
 
-export { closeNavMenu, };
+export {
+	closeNavMenu,
+	cancelEvent,
+};
 
 
 // *************************

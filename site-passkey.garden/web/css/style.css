@@ -138,6 +138,7 @@ textarea {
 	background-color: var(--site-content-color);
 	font-size: 1.1rem;
 	padding: 0.4rem;
+	border: none;
 }
 button {
 	padding: 0.4rem 0.8rem;
@@ -319,6 +320,7 @@ p, details {
 }
 a, a:visited {
 	color: var(--site-link-color);
+	font-weight: 500;
 	text-decoration: underline;
 }
 a:focus-visible {
@@ -612,6 +614,7 @@ body.append-text .button-set button + u::after {
 .try-passkeys-btn {
 	font-size: 1.5rem;
 	border-radius: 0.5rem;
+	border: none;
 	display: inline-flex;
 	flex-flow: row nowrap;
 	column-gap: 1.2rem;

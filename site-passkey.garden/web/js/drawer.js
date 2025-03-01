@@ -1,3 +1,4 @@
+import { cancelEvent, } from "./nav.js";
 import { downloadZip, } from "./external/client-zip/index.js";
 
 
@@ -433,14 +434,6 @@ function onDrawerKey(evt) {
 			cancelEvent(evt);
 			closeDrawer();
 		}
-	}
-}
-
-function cancelEvent(evt) {
-	if (evt != null) {
-		evt.preventDefault();
-		evt.stopImmediatePropagation();
-		evt.stopPropagation();
 	}
 }
 

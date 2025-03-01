@@ -1,4 +1,4 @@
-import "./nav.js";
+import { cancelEvent, } from "./nav.js";
 import { openDrawer, } from "./drawer.js";
 
 
@@ -46,6 +46,8 @@ function init() {
 			))
 	);
 
+	document.querySelector("[rel*=js-controls] > form")
+		.addEventListener("submit",cancelEvent,false);
 	selectIconEl.addEventListener("change",onChangeIcon,false);
 	selectColorEl.addEventListener("change",onChangeColor,false);
 	selectSizeEl.addEventListener("change",onChangeSize,false);
