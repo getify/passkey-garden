@@ -32,12 +32,24 @@ function init() {
 	drawerButtonPreviewEl = drawerEl.querySelector("[rel*=js-drawer-button-preview]");
 	drawerBtnsEl = drawerEl.querySelector("[rel*=js-drawer-buttons");
 
+	for (let el of drawerEl.querySelectorAll(
+		"[rel*=js-close-drawer-btn], [rel*=js-drawer-buttons] > button"
+	)) {
+		el.setAttribute("tabindex","-1");
+	}
+
 	drawerCloseBtn.addEventListener("click",closeDrawer,false);
 	drawerBtnsEl.addEventListener("click",onDrawerButtonClick,false);
 }
 
 async function openDrawer(btnEl) {
 	if (btnEl != null) {
+		for (let el of drawerEl.querySelectorAll(
+			"[rel*=js-close-drawer-btn], [rel*=js-drawer-buttons] > button"
+		)) {
+			el.removeAttribute("tabindex");
+		}
+
 		subjectBtn = btnEl;
 
 		let btnClasses = [ ...btnEl.classList, ];
@@ -403,6 +415,12 @@ function closeDrawer() {
 	drawerEl.classList.add("hidden");
 	drawerEl.setAttribute("aria-expanded","false");
 	drawerEl.setAttribute("aria-hidden","true");
+
+	for (let el of drawerEl.querySelectorAll(
+		"[rel*=js-close-drawer-btn], [rel*=js-drawer-buttons] > button"
+	)) {
+		el.setAttribute("tabindex","-1");
+	}
 
 	document.removeEventListener("click",clickHideDrawer,true);
 	document.removeEventListener("keydown",onDrawerKey,true);

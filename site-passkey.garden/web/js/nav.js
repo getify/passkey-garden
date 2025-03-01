@@ -26,6 +26,12 @@ function init() {
 	navMenuCloseBtn = navMenuEl.querySelector("[rel*=js-close-nav-menu-btn");
 	navMenuItemEls = [ ...navMenuEl.querySelectorAll("li a"), ];
 
+	for (let el of navMenuEl.querySelectorAll(
+		"[rel*=js-close-nav-menu-btn], ul > li > a"
+	)) {
+		el.setAttribute("tabindex","-1");
+	}
+
 	navMenuBtn.addEventListener("click",onToggleNavMenu,false);
 	navMenuCloseBtn.addEventListener("click",onToggleNavMenu,false);
 }
@@ -78,6 +84,11 @@ function onToggleNavMenu() {
 		navMenuEl.classList.remove("hidden");
 		navMenuEl.removeAttribute("aria-hidden");
 		navMenuEl.setAttribute("aria-expanded","true");
+		for (let el of navMenuEl.querySelectorAll(
+			"[rel*=js-close-nav-menu-btn], ul > li > a"
+		)) {
+			el.removeAttribute("tabindex");
+		}
 		navMenuEl.querySelector("ul > li > a").focus();
 
 		document.addEventListener("click",clickHideNavMenu,true);
@@ -92,6 +103,12 @@ function closeNavMenu(returnFocus = true) {
 	navMenuEl.classList.add("hidden");
 	navMenuEl.setAttribute("aria-hidden","true");
 	navMenuEl.setAttribute("aria-expanded","false");
+	for (let el of navMenuEl.querySelectorAll(
+		"[rel*=js-close-nav-menu-btn], ul > li > a"
+	)) {
+		el.setAttribute("tabindex","-1");
+	}
+
 	if (returnFocus) {
 		navMenuBtn.focus();
 	}

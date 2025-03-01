@@ -326,6 +326,7 @@ a, a:visited {
 a:focus-visible {
 	outline: none;
 	text-decoration-style: dotted;
+	color: var(--site-highlight-color);
 }
 
 #controls form {
