@@ -13,6 +13,7 @@ body {
 	--site-background-color-2: #c2cfc8;
 	--site-link-color: #23704a;
 	--site-highlight-color: #f58b40;
+	--min-page-width: 330px;
 	--max-page-width: 60rem;
 
 	display: grid;
@@ -229,11 +230,11 @@ main {
 	width: 100%;
 	padding: 0.75rem;
 	overflow: auto;
-	scrollbar-gutter: stable;
+	scrollbar-gutter: stable both-edges;
 }
 
-.page-width {
-	min-width: 330px;
+#page {
+	min-width: var(--min-page-width);
 	max-width: var(--max-page-width);
 }
 
@@ -332,24 +333,11 @@ a:focus-visible {
 #controls form {
 	display: flex;
 	flex-flow: row wrap;
-	margin: 1.2rem;
+	margin: 1.2rem 0;
 	gap: 0.7rem;
 }
-#select-icon option {
-	display: flex;
-	flex-flow: row nowrap;
-	column-gap: 0.7rem;
-}
-#select-icon option::after {
-	content: "";
-	display: inline-block;
-	width: 1rem;
-	height: 1rem;
-	justify-self: center;
-	background-position: 0;
-	background-size: 1rem;
-	background-repeat: no-repeat;
-	background-image: var(--icon-url);
+#controls form select {
+	flex-grow: 1;
 }
 :has(> #start-upload-btn) {
 	vertical-align: middle;

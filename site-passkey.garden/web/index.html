@@ -28,7 +28,7 @@
 	</button>
 </header>
 
-<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden" aria-hidden="true"
+<nav id="nav-menu" rel="js-nav-menu-slideout" class="hidden"
 aria-expanded="false">
 	<button type="button" id="close-nav-menu-btn" rel="js-close-nav-menu-btn"
 	aria-controls="nav-menu" title="Close Navigation" aria-label="Click to close
@@ -51,23 +51,12 @@ aria-expanded="false">
 	</ul>
 </nav>
 
-<main><div id="page" class="page-width">
-
-<h2>Welcome!</h2>
+<main><div id="page">
 
 <p>
 	Please enjoy <a href="/more#what-is-this-garden">this peaceful garden
 	exploration</a> into <a href="/more#what-are-passkeys">passkey</a> branding
 	and user experience.
-</p>
-<p>
-	To pick a passkey register/login button that works best, try out different
-	icons, color schemes, sizes, and supporting text.
-</p>
-<p>
-	You can also upload -- locally in your browser -- other .svg icons to
-	evaluate their legibility/usability under these various conditions. Maybe
-	your design will end up being the icon we all pick to standardize on!
 </p>
 <p>
 	Feedback or questions?
@@ -76,6 +65,20 @@ aria-expanded="false">
 </p>
 
 <hr>
+
+<details>
+	<summary>Try Customizing These Buttons</summary>
+
+	<p>
+		To pick a passkey register/login button that works best, try out different
+		icons, color schemes, sizes, and supporting text.
+	</p>
+	<p>
+		You can also upload -- locally in your browser -- other .svg icons to
+		evaluate their legibility/usability under these various conditions. Maybe
+		your design will end up being the icon we all pick to standardize on!
+	</p>
+</details>
 
 <div id="controls" rel="js-controls"><form>
 	<select id="select-icon" rel="js-select-icon" title="Icon Candidates"
@@ -116,7 +119,9 @@ aria-expanded="false">
 		<option value="">--Extra Button Text--</option>
 		<option value="(Passkey)">... (Passkey)</option>
 		<option value="(Biometric)">... (Biometric)</option>
+		<option value="(Trusted Unlock)">... (Trusted Unlock)</option>
 		<option value="(Trusted Device)">... (Trusted Device)</option>
+		<option value="(Device Unlock)">... (Device Unlock)</option>
 	</select>
 </form></div>
 <div rel="js-upload-instructions" class="hidden">
@@ -236,8 +241,7 @@ aria-expanded="false">
 
 </div></main>
 
-<div id="drawer" rel="js-drawer-container" class="hidden" aria-hidden="true"
-aria-expanded="false">
+<div id="drawer" rel="js-drawer-container" class="hidden" aria-expanded="false">
 	<button type="button" id="close-drawer-btn"
 	rel="js-close-drawer-btn" aria-controls="drawer"
 	title="Close Drawer" aria-label="Click to close the button preview drawer">

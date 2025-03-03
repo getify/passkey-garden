@@ -37,6 +37,7 @@ function init() {
 	)) {
 		el.setAttribute("tabindex","-1");
 	}
+	drawerEl.setAttribute("aria-hidden","true");
 
 	drawerCloseBtn.addEventListener("click",closeDrawer,false);
 	drawerBtnsEl.addEventListener("click",onDrawerButtonClick,false);
@@ -44,12 +45,6 @@ function init() {
 
 async function openDrawer(btnEl) {
 	if (btnEl != null) {
-		for (let el of drawerEl.querySelectorAll(
-			"[rel*=js-close-drawer-btn], [rel*=js-drawer-buttons] > button"
-		)) {
-			el.removeAttribute("tabindex");
-		}
-
 		subjectBtn = btnEl;
 
 		let btnClasses = [ ...btnEl.classList, ];
@@ -366,14 +361,24 @@ ${btnCSS}
 		};
 
 		drawerButtonPreviewEl.innerHTML = previewMarkup;
-		drawerEl.classList.remove("hidden");
-		drawerEl.setAttribute("aria-expanded","true");
-		drawerEl.removeAttribute("aria-hidden");
+
+		// drawer is currently closed?
+		if (drawerEl.matches(".hidden")) {
+			for (let el of drawerEl.querySelectorAll(
+				"[rel*=js-close-drawer-btn], [rel*=js-drawer-buttons] > button"
+			)) {
+				el.removeAttribute("tabindex");
+			}
+
+			drawerEl.classList.remove("hidden");
+			drawerEl.setAttribute("aria-expanded","true");
+			drawerEl.removeAttribute("aria-hidden");
+
+			document.addEventListener("click",clickHideDrawer,true);
+			document.addEventListener("keydown",onDrawerKey,true);
+		}
 
 		drawerButtonPreviewEl.querySelector("button").focus();
-
-		document.addEventListener("click",clickHideDrawer,true);
-		document.addEventListener("keydown",onDrawerKey,true);
 
 		setTimeout(() => {
 			btnEl.scrollIntoView({ block: "center", behavior: "auto", });
@@ -397,13 +402,29 @@ function getButtonVariables(
 	`).trim();
 }
 
+function getStyledButton(el) {
+	if (el.matches(".button-1, .button-2, .button-3")) {
+		return el;
+	}
+	else if (el.matches("label:has(.button-2) i, label:has(.button-3) u")) {
+		return el.closest("label").querySelector(".button-2, .button-3");
+	}
+	else {
+		return el.closest(".button-1, .button-2, .button-3");
+	}
+}
+
 function clickHideDrawer(evt) {
 	if (
 		// drawer open?
 		!drawerEl.matches(".hidden") &&
 
 		// click outside the drawer?
-		evt.target.closest("#drawer") == null
+		evt.target.closest("#drawer") == null &&
+
+		// not clicking on one of the styled buttons
+		// which would just re-open this drawer?
+		getStyledButton(evt.target) == null
 	) {
 		closeDrawer();
 	}

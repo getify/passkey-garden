@@ -147,15 +147,20 @@ async function promptUploadSVGFile() {
 	}
 }
 
-function getButton(el) {
+function getStyledButton(el) {
 	if (el.matches(".button-1, .button-2, .button-3")) {
 		return el;
 	}
-	return el.closest(".button-1, .button-2, .button-3");
+	else if (el.matches("label:has(.button-2) i, label:has(.button-3) u")) {
+		return el.closest("label").querySelector(".button-2, .button-3");
+	}
+	else {
+		return el.closest(".button-1, .button-2, .button-3");
+	}
 }
 
 function onClickButton(evt) {
-	let btnEl = getButton(evt.target);
+	let btnEl = getStyledButton(evt.target);
 	if (btnEl != null) {
 		openDrawer(btnEl);
 	}

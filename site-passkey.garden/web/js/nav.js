@@ -31,6 +31,7 @@ function init() {
 	)) {
 		el.setAttribute("tabindex","-1");
 	}
+	navMenuEl.setAttribute("aria-hidden","true");
 
 	navMenuBtn.addEventListener("click",onToggleNavMenu,false);
 	navMenuCloseBtn.addEventListener("click",onToggleNavMenu,false);
