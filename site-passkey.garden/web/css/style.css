@@ -652,7 +652,7 @@ button.icon-only-btn {
 	border: none !important;
 	vertical-align: middle;
 }
-button.icon-only-btn {
+button.icon-only-btn::before {
 	content: "";
 	display: inline-block;
 	width: 1.6rem;

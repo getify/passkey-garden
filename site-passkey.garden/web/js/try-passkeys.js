@@ -118,10 +118,13 @@ async function onRegister() {
 			registerResultsEl.classList.remove("hidden");
 			registerResultsEl.classList.add("register-results");
 			registerResultsEl.innerHTML = (
-				`Registered: <strong>${name}</strong>
-				(Account ID: <strong>${accountIDStr}</strong>)
-				<button type="button" class="icon-only-btn copy" rel="js-copy-account-id-btn"
-				data-account-id="${accountIDStr}" title="Copy Account ID">Copy Account ID</button>
+				`Registered: <strong>${name}</strong><br>
+				Account ID: <strong>${accountIDStr}</strong>
+				<button type="button" class="icon-only-btn copy"
+				rel="js-copy-account-id-btn" data-account-id="${accountIDStr}"
+				title="Copy Account ID">
+					Copy Account ID
+				</button>
 				`
 			);
 			return;
