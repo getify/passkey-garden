@@ -406,7 +406,7 @@ function getStyledButton(el) {
 	if (el.matches(".button-1, .button-2, .button-3")) {
 		return el;
 	}
-	else if (el.matches("label:has(.button-2) i, label:has(.button-3) u")) {
+	else if (el.matches("label:has(.button-2, .button-3), label:has(.button-2) i, label:has(.button-3) u")) {
 		return el.closest("label").querySelector(".button-2, .button-3");
 	}
 	else {
@@ -480,6 +480,10 @@ async function copyToClipboard(text) {
 	if (navigator.clipboard) {
 		try {
 			await navigator.clipboard.writeText(text);
+			await markButton(
+				drawerEl.querySelector("[rel*=js-copy-html-css-btn]"),
+				"copy"
+			);
 		}
 		catch (err) {}
 	}
@@ -502,9 +506,22 @@ async function exportZip() {
 		link.download = "passkey-button.zip";
 		link.click();
 		link.remove();
+
+		await markButton(
+			drawerEl.querySelector("[rel*=js-download-zip-btn]"),
+			"download"
+		);
 	}
 	catch (err) {
 		console.log(err);
 		alert("Something failed in creating the .zip, please try again.");
 	}
+}
+
+async function markButton(btnEl,iconClass) {
+	btnEl.classList.remove(iconClass);
+	btnEl.classList.add("check-markup");
+	await new Promise(res => setTimeout(res,750));
+	btnEl.classList.remove("check-markup");
+	btnEl.classList.add(iconClass);
 }

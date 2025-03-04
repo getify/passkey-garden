@@ -653,6 +653,12 @@ button.icon-only-btn::before {
 button.icon-only-btn.copy::before {
 	background-image: url(../images/copy-icon.svg);
 }
+button.icon-only-btn.check-markup::before {
+	background-image: url(../images/check-markup-icon.svg);
+}
+button.icon-only-btn.check-general::before {
+	background-image: url(../images/check-general-icon.svg);
+}
 
 button.icon-text-btn {
 	display: inline-flex;
@@ -685,6 +691,12 @@ button.icon-text-btn.upload::before {
 }
 button.icon-text-btn.download::before {
 	background-image: url(../images/download-icon.svg);
+}
+button.icon-text-btn.check-markup::before {
+	background-image: url(../images/check-markup-icon.svg);
+}
+button.icon-text-btn.check-general::before {
+	background-image: url(../images/check-general-icon.svg);
 }
 
 footer {

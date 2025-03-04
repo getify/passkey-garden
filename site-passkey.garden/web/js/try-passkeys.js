@@ -74,7 +74,7 @@ function init() {
 }
 
 function onClickCopyAccountID(evt) {
-	if (evt.target.matches(".icon-only-btn.copy")) {
+	if (evt.target.matches("[rel*=js-copy-account-id-btn]")) {
 		copyToClipboard(evt.target.dataset.accountId);
 	}
 }
@@ -333,6 +333,10 @@ async function copyToClipboard(text) {
 	if (navigator.clipboard) {
 		try {
 			await navigator.clipboard.writeText(text);
+			await markButton(
+				registerResultsEl.querySelector("[rel*=js-copy-account-id-btn]"),
+				"copy"
+			);
 		}
 		catch (err) {}
 	}
@@ -343,4 +347,12 @@ function onEnterSubmit(evt,btn) {
 		cancelEvent(evt);
 		btn.click();
 	}
+}
+
+async function markButton(btnEl,iconClass) {
+	btnEl.classList.remove(iconClass);
+	btnEl.classList.add("check-general");
+	await new Promise(res => setTimeout(res,750));
+	btnEl.classList.remove("check-general");
+	btnEl.classList.add(iconClass);
 }

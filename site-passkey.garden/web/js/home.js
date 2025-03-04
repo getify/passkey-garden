@@ -151,7 +151,7 @@ function getStyledButton(el) {
 	if (el.matches(".button-1, .button-2, .button-3")) {
 		return el;
 	}
-	else if (el.matches("label:has(.button-2) i, label:has(.button-3) u")) {
+	else if (el.matches("label:has(.button-2, .button-3), label:has(.button-2) i, label:has(.button-3) u")) {
 		return el.closest("label").querySelector(".button-2, .button-3");
 	}
 	else {
