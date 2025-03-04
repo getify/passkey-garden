@@ -8,9 +8,9 @@ var selectSizeEl;
 var selectTextEl;
 var uploadInstructionsEl;
 var startUploadBtn;
-var uploadPreviewImg;
 var styledButtonsEl;
 var titleEls;
+var uploadPreviewImgEl;
 var iconOpts;
 var colorOpts;
 var sizeOpts;
@@ -33,7 +33,7 @@ function init() {
 	selectTextEl = document.querySelector("[rel*=js-select-text]");
 	uploadInstructionsEl = document.querySelector("[rel*=js-upload-instructions]");
 	startUploadBtn = document.querySelector("[rel*=js-start-upload-btn]");
-	uploadPreviewImg = document.querySelector("[rel*=js-upload-preview-img");
+	uploadPreviewImgEl = document.querySelector("[rel*=js-upload-preview-img");
 	styledButtonsEl = document.querySelector("[rel*=js-styled-buttons]");
 	titleEls = styledButtonsEl.querySelectorAll(".button-1[title], label:has(.button-2, .button-3)[title]");
 
@@ -62,7 +62,7 @@ function onChangeIcon(evt) {
 	}
 	else {
 		uploadInstructionsEl.classList.add("hidden");
-		uploadPreviewImg.classList.add("hidden");
+		uploadPreviewImgEl.classList.add("hidden");
 		document.body.style.removeProperty("--icon-url");
 		document.body.classList.remove(...iconOpts);
 		document.body.classList.add(evt.target.value);
@@ -136,7 +136,7 @@ async function promptUploadSVGFile() {
 		document.body.classList.remove(...iconOpts);
 		document.body.classList.add("icon-custom");
 		document.body.style.setProperty("--icon-url",`url("data:image/svg+xml;base64,${btoa(svgText)}")`);
-		uploadPreviewImg.classList.remove("hidden");
+		uploadPreviewImgEl.classList.remove("hidden");
 	}
 	catch (err) {
 		console.log(err);
