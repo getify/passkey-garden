@@ -4,7 +4,8 @@
 	"scripts": {
 		"build": "scripts/build-resources",
 		"clean": "scripts/clean-resources",
-		"deploy": "scripts/deploy"
+		"deploy": "scripts/deploy",
+		"serve": "npx http-server ./web -p 8080"
 	},
 	"dependencies": {
 		"@getify/node-static-alias": "latest",

@@ -2,6 +2,7 @@ import { cancelEvent, } from "./nav.js";
 import { downloadZip, } from "./external/client-zip/index.js";
 
 
+var tryClickingTheseEl;
 var drawerEl;
 var drawerCloseBtn;
 var drawerButtonPreviewEl;
@@ -11,6 +12,8 @@ var previewMarkup;
 var previewExport;
 var iconCache = {};
 var subjectBtn;
+var timerIntv;
+var drawerAlreadyOpened = false;
 
 
 if (document.readyState == "loading") {
@@ -21,12 +24,16 @@ else {
 }
 
 
-export { openDrawer, };
+export {
+	drawerAlreadyOpened,
+	openDrawer,
+};
 
 
 // *************************
 
 function init() {
+	tryClickingTheseEl = document.querySelector("[rel*=js-try-clicking-these]");
 	drawerEl = document.querySelector("[rel*=js-drawer-container]");
 	drawerCloseBtn = drawerEl.querySelector("[rel*=js-close-drawer-btn]");
 	drawerButtonPreviewEl = drawerEl.querySelector("[rel*=js-drawer-button-preview]");
@@ -41,11 +48,41 @@ function init() {
 
 	drawerCloseBtn.addEventListener("click",closeDrawer,false);
 	drawerBtnsEl.addEventListener("click",onDrawerButtonClick,false);
+
+	// initially delay showing the "try clicking these..." hint
+	setTimeout(showHint,2 * 1000);
+
+	// hide the hint after 30s
+	timerIntv = setTimeout(hideHint,30 * 1000);
+}
+
+function showHint() {
+	// drawer hasn't been opened yet?
+	if (!drawerAlreadyOpened) {
+		tryClickingTheseEl.classList.remove("hidden");
+		// hack to force reflow
+		tryClickingTheseEl.dataset.ow = tryClickingTheseEl.offsetWidth;
+		tryClickingTheseEl.classList.add("animated");
+	}
+}
+
+function hideHint() {
+	if (timerIntv != null) {
+		clearTimeout(timerIntv);
+		timerIntv = null;
+	}
+	tryClickingTheseEl.classList.remove("animated");
+	// hack to force reflow
+	tryClickingTheseEl.dataset.ow = tryClickingTheseEl.offsetWidth;
+	tryClickingTheseEl.classList.add("hidden");
 }
 
 async function openDrawer(btnEl) {
 	if (btnEl != null) {
+		drawerAlreadyOpened = true;
 		subjectBtn = btnEl;
+
+		hideHint();
 
 		let btnClasses = [ ...btnEl.classList, ];
 		let bodyClasses = [ ...document.body.classList, ];
