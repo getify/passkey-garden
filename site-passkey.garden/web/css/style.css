@@ -228,15 +228,15 @@ header > button:focus-visible {
 main {
 	grid-area: page-content;
 	width: 100%;
-	padding: 0.75rem;
+	overflow: auto;
+	scrollbar-gutter: stable both-edges;
+	scrollbar-width: thin;
 }
 
 #page {
+	margin: 0.75rem;
 	min-width: var(--min-page-width);
 	max-width: var(--max-page-width);
-	width: 100%;
-	overflow: auto;
-	scrollbar-gutter: stable both-edges;
 }
 
 #nav-menu {

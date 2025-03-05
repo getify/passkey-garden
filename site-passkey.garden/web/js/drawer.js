@@ -418,7 +418,7 @@ ${btnCSS}
 		drawerButtonPreviewEl.querySelector("button").focus();
 
 		setTimeout(() => {
-			btnEl.scrollIntoView({ block: "center", behavior: "auto", });
+			btnEl.scrollIntoView({ block: "center", behavior: "smooth", });
 		},125);
 	}
 }

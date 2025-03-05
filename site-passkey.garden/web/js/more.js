@@ -56,5 +56,5 @@ function showElement(element) {
 	else if (element.closest("details") != null) {
 		element.closest("details").open = true;
 	}
-	element.scrollIntoView({ block: "start", behavior: "auto", });
+	element.scrollIntoView({ block: "start", behavior: "smooth", });
 }
