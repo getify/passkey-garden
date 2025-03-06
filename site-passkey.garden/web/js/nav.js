@@ -1,3 +1,6 @@
+import { cancelEvent, } from "./util.js";
+
+
 var navMenuBtn;
 var navMenuEl;
 var navMenuCloseBtn;
@@ -12,10 +15,7 @@ else {
 }
 
 
-export {
-	closeNavMenu,
-	cancelEvent,
-};
+export { closeNavMenu, };
 
 
 // *************************
@@ -119,12 +119,4 @@ function closeNavMenu(returnFocus = true) {
 
 	document.removeEventListener("click",clickHideNavMenu,true);
 	document.removeEventListener("keydown",onMenuKey,true);
-}
-
-function cancelEvent(evt) {
-	if (evt != null) {
-		evt.preventDefault();
-		evt.stopImmediatePropagation();
-		evt.stopPropagation();
-	}
 }

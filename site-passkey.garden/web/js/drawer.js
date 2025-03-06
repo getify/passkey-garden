@@ -1,4 +1,8 @@
-import { cancelEvent, } from "./nav.js";
+import {
+	prefersReducedMotion,
+	getStyledButton,
+	cancelEvent,
+} from "./util.js";
 import { downloadZip, } from "./external/client-zip/index.js";
 
 
@@ -428,7 +432,10 @@ ${btnCSS}
 		drawerEl.querySelector("[rel*=js-copy-html-css-btn]").focus();
 
 		setTimeout(() => {
-			btnEl.scrollIntoView({ block: "center", behavior: "smooth", });
+			btnEl.scrollIntoView({
+				block: "center",
+				behavior: (prefersReducedMotion() ? "instant" : "smooth"),
+			});
 		},125);
 	}
 }
@@ -449,18 +456,6 @@ function getButtonVariables(
 	`).trim();
 }
 
-function getStyledButton(el) {
-	if (el.matches(".button-1, .button-2, .button-3")) {
-		return el;
-	}
-	else if (el.matches("label:has(.button-2, .button-3), label:has(.button-2) i, label:has(.button-3) u")) {
-		return el.closest("label").querySelector(".button-2, .button-3");
-	}
-	else {
-		return el.closest(".button-1, .button-2, .button-3");
-	}
-}
-
 function clickHideDrawer(evt) {
 	if (
 		// drawer open?
@@ -473,6 +468,10 @@ function clickHideDrawer(evt) {
 		// which would just re-open this drawer?
 		getStyledButton(evt.target) == null
 	) {
+		// not a click on the open-nav-menu button?
+		if (!evt.target.matches("[rel*=js-nav-menu-btn]")) {
+			cancelEvent(evt);
+		}
 		closeDrawer();
 	}
 }

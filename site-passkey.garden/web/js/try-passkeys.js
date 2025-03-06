@@ -1,7 +1,5 @@
-import {
-	closeNavMenu,
-	cancelEvent,
-} from "./nav.js";
+import { cancelEvent, } from "./util.js";
+import "./nav.js";
 import {
 	supportsWebAuthn,
 	supportsConditionalMediation,
