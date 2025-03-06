@@ -293,12 +293,12 @@ label:has(.passkey-button-3) {
     box-sizing: inherit;
     display: inline-block;
     border: none;
-    border-radius: calc(var(--solo-button-icon-size) * 0.25) !important;
+    border-radius: calc(var(--solo-button-icon-size) * 0.25);
     width: min-content;
-    height: var(--solo-button-size) !important;
-    padding: 0 !important;
-    font-size: 0.01px !important;
-    color: rgba(0,0,0,0) !important;
+    height: var(--solo-button-size);
+    padding: 0;
+    font-size: 0.01px;
+    color: rgba(0,0,0,0);
     background-color: var(--button-background-color);
     white-space: nowrap;
 }
@@ -415,7 +415,17 @@ ${btnCSS}
 			document.addEventListener("keydown",onDrawerKey,true);
 		}
 
-		drawerButtonPreviewEl.querySelector("button").focus();
+		let previewBtn = drawerButtonPreviewEl.querySelector("button");
+		previewBtn.disabled = true;
+		previewBtn.setAttribute("tabindex","-1");
+		previewBtn.setAttribute("aria-role","presentation");
+		let labelParentEl = previewBtn.closest("label");
+		if (labelParentEl != null) {
+			labelParentEl.setAttribute("tabindex","-1");
+			labelParentEl.setAttribute("aria-role","presentation");
+		}
+
+		drawerEl.querySelector("[rel*=js-copy-html-css-btn]").focus();
 
 		setTimeout(() => {
 			btnEl.scrollIntoView({ block: "center", behavior: "smooth", });

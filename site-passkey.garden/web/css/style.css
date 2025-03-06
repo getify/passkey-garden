@@ -628,6 +628,26 @@ body.append-text .button-set button + u::after {
 	color: var(--site-highlight-color);
 }
 
+/* provide a clean-slate for the preview button's CSS */
+:where( #button-preview button ) {
+	border-radius: unset;
+	padding: unset;
+	font-size: unset;
+	color: unset;
+	background-color: unset;
+}
+#button-preview button {
+	cursor: unset;
+}
+#button-preview button:focus {
+	outline: none;
+	box-shadow: unset;
+}
+#button-preview button[disabled] {
+	cursor: unset !important;
+	opacity: unset !important;
+}
+
 #more-questions {
 	list-style-type: none;
 	margin: 0 0 0 0.75rem;
