@@ -532,6 +532,7 @@ body.append-text .button-set button + u::after {
 	transition: opacity 0.75s;
 	opacity: 0.6;
 	color: var(--dark-color);
+	cursor: help;
 }
 #click-these-buttons::before {
 	content: "";
@@ -786,4 +787,28 @@ footer {
 	text-align: center;
 	font-weight: bold;
 	font-size: 0.9rem;
+}
+
+@media (prefers-reduced-motion) {
+	#nav-menu {
+		transition-duration: 0s;
+	}
+	#nav-menu.hidden {
+		transition-duration: 0s;
+	}
+	#click-these-buttons {
+		transition-duration: 0s;
+	}
+	#click-these-buttons.hidden {
+		transition-duration: 0s;
+	}
+	#click-these-buttons.animated {
+		animation: none;
+	}
+	#drawer {
+		transition-duration: 0s;
+	}
+	#drawer.hidden {
+		transition-duration: 0s;
+	}
 }
