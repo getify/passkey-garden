@@ -182,21 +182,29 @@ code {
 
 header {
 	grid-area: page-header;
-	display: grid;
-	grid-template-areas: "button header";
-	grid-template-columns: min-content minmax(auto,45rem);
-	border-bottom: thin solid var(--site-content-color);
 	background-color: var(--site-background-color-2);
+	border-bottom: thin solid var(--site-content-color);
+	scrollbar-gutter: stable both-edges;
+	scrollbar-width: thin;
+	height: min-content;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+header > div {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	width: 100%;
+	max-width: calc(var(--max-page-width) + 1.5rem);
 	align-items: center;
 }
-header > h1 {
-	grid-area: header;
+
+header > div > h1 {
 	justify-self: center;
 	margin: 0 2rem 0 0;
 	padding: 0;
 	white-space: nowrap;
 }
-header > h1::before {
+header > div > h1::before {
 	content: "";
 	display: inline-block;
 	width: 1.4rem;
@@ -206,8 +214,7 @@ header > h1::before {
 	background-repeat: no-repeat;
 	background-image: url(../images/logo.svg);
 }
-header > button {
-	grid-area: button;
+header > div > button {
 	justify-self: start;
 	color: var(--site-content-color);
 	background-color: rgba(0,0,0,0);
@@ -221,7 +228,7 @@ header > button {
 	border-radius: 0;
 	box-shadow: none !important;
 }
-header > button:focus-visible {
+header > div > button:focus-visible {
 	color: var(--site-highlight-color);
 }
 

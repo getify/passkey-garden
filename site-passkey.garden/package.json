@@ -1,6 +1,6 @@
 {
 	"name": "passkey-garden",
-	"version": "0.0.2025-02-27",
+	"version": "0.0.2025-03-07",
 	"scripts": {
 		"build": "scripts/build-resources",
 		"clean": "scripts/clean-resources",
@@ -15,6 +15,7 @@
 	"devDependencies": {
 		"csso": "~5.0.5",
 		"html-minifier": "~4.0.0",
+		"http-server": "~14.1.1",
 		"micromatch": "~4.0.8",
 		"recursive-readdir-sync": "~1.0.6",
 		"terser": "~5.39.0"
