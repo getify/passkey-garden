@@ -6,6 +6,26 @@
 <title>Passkey Garden</title>
 <link rel="stylesheet" href="/css/style.css">
 <link rel="icon" href="images/logo.svg">
+
+<link rel="modulepreload" href="/js/home.js" />
+<link rel="modulepreload" href="/js/util.js" />
+<link rel="modulepreload" href="/js/nav.js" />
+<link rel="modulepreload" href="/js/drawer.js" />
+<link rel="preload" href="/images/icon-a.svg" as="image" type="image/svg+xml">
+<link rel="preload" href="/images/copy-icon.svg" as="image" type="image/svg+xml">
+<link rel="preload" href="/images/upload-icon.svg" as="image" type="image/svg+xml">
+<link rel="preload" href="/images/download-icon.svg" as="image" type="image/svg+xml">
+<link rel="prefetch" href="/images/click-these-buttons.svg">
+<link rel="prefetch" href="/images/icon-b.svg">
+<link rel="prefetch" href="/images/icon-c.svg">
+<link rel="prefetch" href="/images/icon-d.svg">
+<link rel="prefetch" href="/images/icon-e.svg">
+<link rel="prefetch" href="/images/icon-f.svg">
+<link rel="prefetch" href="/images/streamline-fido-icon.svg">
+<link rel="prefetch" href="/images/check-general-icon.svg">
+<link rel="prefetch" href="/images/check-markup-icon.svg">
+<link rel="prefetch" href="/js/external/client-zip/index.js">
+
 <meta name="keywords" content="authentication, login, passkey, password, biometric, face ID, touch ID, unlock">
 <meta itemprop="name" content="Passkey Garden">
 <meta itemprop="description" content="Explore the branding and UX of biometric passkey logins and learn how to make users of your site/app love passkeys over passwords.">
@@ -67,7 +87,7 @@ aria-expanded="false">
 <hr>
 
 <details>
-	<summary>Try Customizing These Buttons</summary>
+	<summary>Try customizing these buttons...</summary>
 
 	<p>
 		To pick a passkey register/login button that works best, try out different
@@ -264,7 +284,7 @@ aria-expanded="false">
 
 			<button type="button" class="icon-text-btn download"
 			rel="js-download-zip-btn" title="Download .zip of HTML/CSS/image files"
-			aria-label="Click to download a .zip file containing the exported HTML, CSS, and image files for the previewed button"
+			aria-label="Click to download a .zip file containing the exported HTML, CSS, and image files for the previewed button" disabled
 			>
 				.ZIP
 			</button>

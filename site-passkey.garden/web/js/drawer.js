@@ -3,7 +3,6 @@ import {
 	getStyledButton,
 	cancelEvent,
 } from "./util.js";
-import { downloadZip, } from "./external/client-zip/index.js";
 
 
 var tryClickingTheseEl;
@@ -18,6 +17,7 @@ var iconCache = {};
 var subjectBtn;
 var timerIntv;
 var drawerAlreadyOpened = false;
+var downloadZip;
 
 
 if (document.readyState == "loading") {
@@ -437,6 +437,12 @@ ${btnCSS}
 				behavior: (prefersReducedMotion() ? "instant" : "smooth"),
 			});
 		},125);
+
+		// still need to lazy load this library?
+		if (downloadZip == null) {
+			({ downloadZip, } = await import("/js/external/client-zip/index.js"));
+			drawerEl.querySelector("[rel*=js-download-zip-btn]").disabled = false;
+		}
 	}
 }
 
