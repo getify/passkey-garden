@@ -671,6 +671,16 @@ body.append-text .button-set button + u::after {
 	margin-bottom: 3rem;
 }
 
+.more-anchor-link {
+	text-decoration: none;
+}
+details:not([open]) .more-anchor-link {
+	display: none;
+}
+details[open] .more-anchor-link {
+	display: inline;
+}
+
 .list-custom-bullets {
 	max-width: 90%;
 	text-align: center;
