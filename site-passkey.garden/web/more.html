@@ -139,6 +139,156 @@ aria-expanded="false">
 		</details>
 	</li>
 	<li>
+		<details id="passkey-security">
+			<summary>OK, but how are they actually more secure?</summary>
+
+			<p>
+				Technology is always trying to claim it's able to solve our
+				problems. But in the end, the weakest link is always the
+				human, because:
+			</p>
+			<ul>
+				<li>
+					we can all too easily be tricked (aka,
+					<a href="https://www.phishing.org/what-is-phishing"
+					target="_blank" rel="noopener">phished!</a>), by sophisticated
+					scammers that make a site that looks <em>just like</em> our
+					bank, AND construct a very plausible looking domain/URL that
+					convinces you <em>it must be</em> your bank. And then there's
+					the social engineering of them calling you on the phone and
+					pretending to be customer support, and sending you an SMS code
+					you need to share with them, and... blah blah. It's a never-ending
+					string of <strong>social engineering</strong> hacks so they
+					don't even have to steal our secrets, we just willingly give
+					them over, because... we're sheep.
+				</li>
+				<li>
+					we are lazy, and unsophisticated, and annoyed by password
+					fatigue, so we just come up with <em>one good password</em> (or
+					maybe even a not so good), and we reuse it over and over again.
+				</li>
+				<li>
+					we choose convenience over security, <strong>every single
+					time</strong>. we only "pick" security when there's no choice
+					and it's forced on us.
+				</li>
+			</ul>
+			<p>
+				So, why on earth are passkeys going to be any different? This is
+				just another vendor lock-in hype cycle, right?!?
+			</p>
+			<p>
+				Nope, passkeys really are the solution to all this mess. They
+				really are the future. They really are <strong>phishing
+				proof</strong>. But how? Two key things you need to know about
+				passkeys that you probably didn't realize:
+			</p>
+			<ol>
+				<li>
+					<p>
+						Even if a scammer tricks you into believing you should give
+						away your account credentials secrets to them, it's
+						<strong>truly impossible</strong> for you to do so. Even if
+						you <em>really want to give them</em> the secrets, you can't.
+					</p>
+					<p>
+						Passkeys hide the actual secret in a very secure place on
+						your device, that even YOU can't get into (nor can the
+						police or anyone else!). It's a secure system where the
+						secret goes in once, and NEVER comes out. It's a
+						<strong>security black box</strong>.
+					</p>
+					<p>
+						Passkeys shift the security/trust mechanism from the server
+						to the client. The server doesn't need your secret to let
+						you into your account. It only needs to know for sure that
+						you can still <em>use</em> (not access!) your secret.
+					</p>
+					<p>
+						The server asks a question (a <em>challenge</em>), and the
+						client asks the user to prove who they are with biometrics (Face, Fingerprint, etc). Once the biometric factor is
+						provided, the question/challenge is sent into the black box,
+						and your secret is <em>used</em> to create an answer (a
+						<em>signature</em>) that only your secret could provide,
+						using special math called "public-key cryptography". No,
+						that's <strong>NOT</strong> the "cryptocurrency" (bitcoin,
+						etc) you've heard of!
+					</p>
+					<p>
+						That answer/signature is sent back to the server, which
+						matches it up to the question/challenge it asked. When they
+						match, you're let into your account. Boom, that's it!
+					</p>
+					<p>
+						And the important part is, that answer/signature is of no
+						use to anyone except the actual server that asked the
+						question. Even if a scammer/hacker got ahold of an
+						answer/signature, they can't reuse it later, and they
+						can't use it anywhere else. It's one-time and locked to
+						only where the question/challenge came from. They can't
+						generate any new answers/signatures from it, because the
+						math is one-way (can't be reversed).
+					</p>
+					<p>
+						Again, put simply: the scammer/hacker can't get your actual
+						secret because even you don't have access to your secret
+						to give it to them. Your secret is hidden, and can only be
+						<em>used</em> by your device, if your biometric factor
+						matches. <strong>This is about as secure as it gets.</strong>
+					</p>
+				</li>
+				<li>
+					<p>
+						Now, the second piece of the puzzle. You create this secret
+						and store it securely on your device. But what if you get
+						tricked into trying to use this secret by a "man in the
+						middle" attack, where another server shows you a site
+						that <em>looks exactly</em> like the site you want to login
+						to? Can't they then piggyback off your legitimate session
+						and do nefarious things in the background while you do your
+						legitimate stuff?
+					</p>
+					<p>
+						Again, nope! You're safe. The passkey secret you create is
+						absolutely locked to the same origin (domain name, port,
+						protocol, etc), and can <em>never be used</em> for any other
+						origin, no matter how much it might <em>look like</em> the
+						same.
+					</p>
+					<p>
+						<strong>No matter how tricked you as a human may be</strong>,
+						your browser/device will never let you use your passkey on a
+						different site than you initially registered with. Period.
+						Unlike passwords, passkeys are locked to origins, so a
+						scammer/hacker cannot come along and sneak in between later.
+					</p>
+					<p>
+						Oh, but... what about the scammer/hacker that tricks you
+						from the <em>very beginning</em>? If they are the middle man
+						all along, they have you completely compromised, right?
+					</p>
+					<p>
+						Again, nope. When a server is registering the passkey the
+						first time, the origin used when the client prompts the
+						user for their passkey registration, is *locked* into the
+						passkey, and will be locked into every answer/signature the
+						client ever gives back to the server.
+					</p>
+					<p>
+						In short, the <em>server can always tell</em> if an attacker
+						is in the middle, and reject, even from the very first
+						time you sign up. Your bank would never allow such an
+						attack to proceed.
+					</p>
+				</li>
+			</ol>
+			<p>
+				In short, passkeys are full protection for your account security,
+				<strong>even if you yourself don't act very secure!</strong>
+			</p>
+		</details>
+	</li>
+	<li>
 		<details id="official-icon-already">
 			<summary>Isn't there already an "official" icon for passkeys?</summary>
 
