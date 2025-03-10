@@ -58,14 +58,20 @@ function init() {
 	selectTextEl.addEventListener("change",onChangeText,false);
 	startUploadBtn.addEventListener("click",promptUploadSVGFile,false);
 	styledButtonsEl.addEventListener("click",onClickButton,false);
+
+	uploadInstructionsEl.setAttribute("aria-hidden","true");
 }
 
 function onChangeIcon(evt) {
 	if (evt.target.value == "icon-custom") {
 		uploadInstructionsEl.classList.remove("hidden");
+		uploadInstructionsEl.setAttribute("aria-expanded","true");
+		uploadInstructionsEl.removeAttribute("aria-hidden");
 	}
-	else {
+	else if (!uploadInstructionsEl.matches(".hidden")) {
 		uploadInstructionsEl.classList.add("hidden");
+		uploadInstructionsEl.setAttribute("aria-expanded","false");
+		uploadInstructionsEl.setAttribute("aria-hidden","true");
 		uploadPreviewImgEl.classList.add("hidden");
 		document.body.style.removeProperty("--icon-url");
 		document.body.classList.remove(...iconOpts);

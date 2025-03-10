@@ -100,9 +100,11 @@ aria-expanded="false">
 	</p>
 </details>
 
-<div id="controls" rel="js-controls"><form><select id="select-icon" rel="js-select-icon" title="Icon Candidates"
-	aria-label="Select from various candidates for passkey icon"
-	aria-controls="styled-buttons">
+<div id="controls" rel="js-controls"><form>
+	<select id="select-icon" rel="js-select-icon" title="Icon Candidates"
+		aria-label="Select from various candidates for passkey icon"
+		aria-controls="styled-buttons"
+	>
 		<option value="icon-a" selected>Icon A</option>
 		<option value="icon-b">Icon B</option>
 		<option value="icon-c">Icon C</option>
@@ -111,9 +113,12 @@ aria-expanded="false">
 		<option value="icon-f">Icon F</option>
 		<option value="icon-streamline-fido">Streamline's FIDO</option>
 		<option value="icon-custom">Upload SVG</option>
-	</select><select rel="js-select-color" title="Color Themes"
-	aria-label="Select from various color themes for buttons"
-	aria-controls="styled-buttons">
+	</select>
+
+	<select rel="js-select-color" title="Color Themes"
+		aria-label="Select from various color themes for buttons"
+		aria-controls="styled-buttons"
+	>
 		<option value="color-black-white" selected>Black & White</option>
 		<option value="color-lavendar-white">Lavender & White</option>
 		<option value="color-coral-white">Coral & White</option>
@@ -122,24 +127,34 @@ aria-expanded="false">
 		<option value="color-purples">Purples</option>
 		<option value="color-blues">Blues</option>
 		<option value="color-greens">Greens</option>
-	</select><select rel="js-select-size" title="Button Sizes"
-	aria-label="Select from various sizes for buttons"
-	aria-controls="styled-buttons">
+	</select>
+
+	<select rel="js-select-size" title="Button Sizes"
+		aria-label="Select from various sizes for buttons"
+		aria-controls="styled-buttons"
+	>
 		<option value="size-1">Size 1</option>
 		<option value="size-2" selected>Size 2</option>
 		<option value="size-3">Size 3</option>
 		<option value="size-4">Size 4</option>
-	</select><select rel="js-select-text" title="Append Extra Button Text"
-	aria-label="Select from various text to append to buttons (after 'Register' or 'Login')"
-	aria-controls="styled-buttons">
+	</select>
+
+	<select rel="js-select-text" title="Append Extra Button Text"
+		aria-label="Select from various text to append to buttons (after 'Register' or 'Login')"
+		aria-controls="styled-buttons"
+	>
 		<option value="">--Extra Button Text--</option>
 		<option value="(Passkey)">... (Passkey)</option>
 		<option value="(Biometric)">... (Biometric)</option>
 		<option value="(Trusted Unlock)">... (Trusted Unlock)</option>
 		<option value="(Trusted Device)">... (Trusted Device)</option>
 		<option value="(Device Unlock)">... (Device Unlock)</option>
-	</select></form></div>
-<div rel="js-upload-instructions" class="hidden">
+	</select>
+</form></div>
+
+<div rel="js-upload-instructions" class="hidden" aria-expanded="false"
+	aria-live="polite" aria-label="Instructions for uploading a custom icon to preview in the stylized buttons"
+>
 	<hr>
 	<p>
 		To upload an icon, make sure it's a single-color SVG, transparent
