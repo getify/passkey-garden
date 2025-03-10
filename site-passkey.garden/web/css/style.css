@@ -6,7 +6,6 @@ body {
 	--button-vertical-padding: calc(var(--button-icon-size) * 0.6);
 	--button-horizontal-padding: calc(var(--button-icon-padding) * 2);
 	--button-height: calc(var(--button-icon-size) + (var(--button-vertical-padding) * 2));
-	--reset-icon-to-black-filter: brightness(0) saturate(100%);
 
 	--site-content-color: #323634;
 	--site-background-color: #dfebe5;
@@ -501,10 +500,10 @@ body.append-text .button-set button + u::after {
 }
 .button-set.light-mode .button-1::before,
 .button-set.light-mode .button-3::before {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
+	--icon-filter: var(--light-icon-filter);
 }
 .button-set.light-mode i:has(+ .button-2) {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
+	--icon-filter: var(--dark-icon-filter);
 }
 .button-set.dark-mode {
 	--button-content-color: var(--dark-color);
@@ -514,10 +513,10 @@ body.append-text .button-set button + u::after {
 }
 .button-set.dark-mode .button-1::before,
 .button-set.dark-mode .button-3::before {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
+	--icon-filter: var(--dark-icon-filter);
 }
 .button-set.dark-mode i:has(+ .button-2) {
-	--icon-filter: var(--reset-icon-to-black-filter) var(--light-icon-filter);
+	--icon-filter: var(--light-icon-filter);
 }
 
 #click-these-buttons.hidden {
@@ -550,7 +549,7 @@ body.append-text .button-set button + u::after {
 	background-size: 1rem;
 	background-repeat: no-repeat;
 	background-image: url(../images/click-these-buttons.svg);
-	filter: var(--reset-icon-to-black-filter) var(--dark-icon-filter);
+	filter: var(--dark-icon-filter);
 }
 #click-these-buttons.animated {
 	animation: pulse 2s infinite;
