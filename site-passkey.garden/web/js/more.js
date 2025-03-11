@@ -19,15 +19,11 @@ function init() {
 			showElement(element);
 		}
 	}
-	else {
-		// open first element by default
-		document.querySelector("details").open = true;
-	}
 
-	document.addEventListener("click",onClickInPageNavItem,true);
+	document.addEventListener("click",onClick,true);
 }
 
-function onClickInPageNavItem(evt) {
+function onClick(evt) {
 	if (evt.target.matches("#nav-menu li a")) {
 		let url = new URL(evt.target.href,document.location.origin);
 
@@ -46,6 +42,13 @@ function onClickInPageNavItem(evt) {
 					document.getElementById(url.hash.slice(1))
 				);
 			}
+		}
+	}
+	// in-page navigation link?
+	else if (evt.target.matches(`a[href^="#"]:not(.more-anchor-link)`)) {
+		let element = document.getElementById(evt.target.getAttribute("href").slice(1));
+		if (element) {
+			showElement(element);
 		}
 	}
 }

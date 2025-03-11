@@ -655,9 +655,19 @@ body.append-text .button-set button + u::after {
 	opacity: unset !important;
 }
 
+#faq-contents {
+	margin: 1.5rem;
+	padding: 0;
+	font-size: 1.2rem;
+	line-height: 150%;
+}
+#faq-contents li {
+	margin-bottom: 0.75rem;
+}
+
 #more-questions {
 	list-style-type: none;
-	margin: 0 0 0 0.75rem;
+	margin: 0.75rem 0 0 0.75rem;
 	padding: 0;
 }
 #more-questions > li {
