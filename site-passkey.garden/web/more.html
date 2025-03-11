@@ -68,7 +68,7 @@ aria-expanded="false">
 			<summary>What is this garden?
 				<a class="more-anchor-link" href="#what-is-this-garden"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 			<p>
@@ -108,7 +108,7 @@ aria-expanded="false">
 			<summary>What are passkeys?
 				<a class="more-anchor-link" href="#what-are-passkeys"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 			<p>
@@ -153,14 +153,13 @@ aria-expanded="false">
 			<summary>OK, but how are they actually more secure?
 				<a class="more-anchor-link" href="#passkey-security"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 
 			<p>
-				Technology is always trying to claim it's able to solve our
-				problems. But in the end, the weakest link is always the
-				human, because:
+				Technology always claims it's able to solve our security issues.
+				But in the end, the weakest link is always the human, because:
 			</p>
 			<ul>
 				<li>
@@ -304,11 +303,188 @@ aria-expanded="false">
 		</details>
 	</li>
 	<li>
+		<details id="passkey-sync">
+			<summary>Do I have to re-setup passkeys on each device!?
+				<a class="more-anchor-link" href="#passkey-sync"
+					aria-role="presentation"
+					aria-label="add this anchor link as address bar's URL fragment"
+				>🔗</a>
+			</summary>
+
+			<p>
+				When you register an account using a traditional password, you
+				can usually login to that account immediately, from any device,
+				as long as you remember and enter that password. That's a desired
+				and expected convenience!
+			</p>
+			<p>
+				So how does this work in the world of passkeys, since they seem to
+				be more locked to each specific device?
+			</p>
+			<p>
+				At its core, passkeys shift the burden of ensuring user identity
+				and authentication from the server (checking a password) to the
+				client device (prompting the user for their biometric factor). For
+				security reasons, <em>that does mean</em> that inherently,
+				<strong>passkeys are per-device</strong>.
+			</p>
+			<p>
+				If someday you have 50 different online accounts setup with passkeys,
+				and you want to access all those accounts from each of your three
+				devices (phone, tablet, laptop), <strong>YES, you will have to
+				setup all 50 account passkeys on each device</strong>, meaning you'll
+				have 150 unique passkeys.
+			</p>
+			<p>
+				That <em>might not sit well</em> with you. Think about the extra
+				effort it will require on your part. You might immediately recoil
+				in dislike of that prospect.
+			</p>
+			<p>
+				Now, reality check: passkey setup is generally one or two clicks,
+				plus showing your face or fingerprint. It's really not much, and
+				only takes a few seconds. It's usually <em>far quicker</em> than
+				traditional password-based account setup.
+			</p>
+			<p>
+				That said, most people will not be enthusiastic about this situation.
+			</p>
+			<p>
+				Per-device passkeys are the new gold standard for account security,
+				but there's no question that it will be a bit less convenient. That
+				friction is a <em>necessary difficulty</em>. But as pointed out
+				above, when given the choice between convenience and security, most
+				everyone chooses convenience, most every time.
+			</p>
+			<p>
+				<strong>So what do we do?</strong> Swear off passkeys and go back to
+				passwords?!?
+			</p>
+			<p>
+				Google and Apple both know this reality, accutely. Since these two
+				companies control the vast majority of devices (especially mobile),
+				and indeed the two largest software ecosystems in the world, they're
+				both in a position to meaningfully strike a balance between security
+				and convenience. So they've each responded with a <em>compromise</em>.
+			</p>
+			<p>
+				Google (via Android, and the Chrome browser) provides the
+				<a href="https://passwords.google.com/?pli=1" target="_blank"
+				rel="noopener">Google Password Manager</a>. You've likely already
+				used it to store your passwords, credit cards, and other personal info, all conveniently cloud-synchronized to all your devices.
+			</p>
+			<p>
+				And Apple's <a href="https://support.apple.com/en-us/109016"
+				target="_blank" rel="noopener">iCloud Keychain</a> does the same thing
+				for all your iOS devices.
+			</p>
+			<p>
+				Both of these mechanisms now support setting up and synchronizing
+				passkeys across your devices, in much the same way.
+			</p>
+			<p>
+				Honestly, that's fantastic news! The security of passkeys, with the
+				convenience of automatic cross-device synchronization. Win-win!
+			</p>
+			<p>
+				Of course, it <em>is a compromise</em>. Such passkeys are able to
+				be synchronized cross-device because they aren't actually stored
+				in the securest parts of your device/OS, as per-device passkeys are.
+				These synchronized passkeys basically use Google's or Apple's
+				servers as the "secure device authenticator".
+			</p>
+			<p>
+				Google and Apple both say that they store this secret information
+				in a secure way. They don't actually store any of your biometrics
+				on their servers. They use your biometrics locally on your device,
+				to encrypt your secret, and then store that encrypted information
+				both on your device and on their servers.
+			</p>
+			<p>
+				So to be clear: <strong>ONLY YOU can only "unlock" and use that
+				secret info</strong>, if you present your biometric factor
+				<strong>on your device.</strong> They can't do anything with your
+				encrypted secrets without your intervention. They're only
+				<em>holding</em> the encrypted information for you -- a concept
+				known as
+				<a href="https://nordlocker.com/features/zero-knowledge-encryption/"
+				target="_blank" rel="noopener">Zero-Knowledge Encryption</a>.
+			</p>
+			<p>
+				But yeah, they're storing <em>some</em> information, like what site
+				and username/email you used to setup each passkey. Is that "tracking"
+				you? <strong>Yes.</strong> More so than if you used a per-device
+				passkey without any cloud synchronization.
+			</p>
+			<p>
+				And, a lesser but not unimportant concern is, you cannot use these
+				passkeys locally on your device without a connection to the
+				respective cloud service (Google or Apple). If those were ever down,
+				or you were locked out for some reason, your access to your own
+				passkeys (for all your other accounts) is blocked.
+			</p>
+			<p>
+				You should think very carefully about how you feel about this
+				compromise. There's no "free lunch" here. Your account security
+				is important, and passwords are no longer a sufficient and durable
+				system for protection. Passkeys are the better solution. But with
+				that extra security, there's a choice to be made: are we going to
+				take our own responsibility (and effort), or are we going to choose
+				the convenience and offload that to Google or Apple?
+			</p>
+			<p>
+				We can't make that choice for you. That's up to you. But at least
+				you're more well-informed now, so your choice will be be more
+				responsible and appropriate.
+			</p>
+		</details>
+	</li>
+	<li>
+		<details id="passkey-exchange">
+			<summary>Can I synchronize/share my passkeys between DIFFERENT password
+				managers?
+				<a class="more-anchor-link" href="#passkey-exchange"
+					aria-role="presentation"
+					aria-label="add this anchor link as address bar's URL fragment"
+				>🔗</a>
+			</summary>
+
+			<p>
+				As mentioned <a href="#passkey-sync">in the previous question</a>,
+				passkeys <em>can be synced</em> through Google Password Manager and
+				Apple's iCloud Keychain. But what about exchanging my passkeys across
+				these ecosystems? And what about using other password managers?
+			</p>
+			<p>
+				This is an emerging field, so information is subject to change. But,
+				the good news is, the main players in this space are indeed working
+				on this capability. In particular, the FIDO alliance is working
+				<a href="https://fidoalliance.org/specifications-credential-exchange-specifications/" target="_blank"
+				rel="noopener">on a set of specifications for credential exchange</a>,
+				where you will have more portability and interoperability of your
+				passkey synchronization.
+			</p>
+			<p>
+				If this is an area you're specifically interested in, you might
+				consider <a href="https://github.com/fido-alliance/credential-exchange-feedback" target="_blank" rel="noopener">getting
+				involved by providing feedback</a> on those draft specifications.
+			</p>
+			<p>
+				Popular third-party password managers, such as Bitwarden, 1Password,
+				and Dashlane, are all actively engaged in adding passkey support,
+				and including passkey synchronization and exchange capabilities. Of
+				course, the same concerns shared in the previous section, about the
+				tradeoffs of the security/convenience compromise, apply. Think
+				carefully about this choice.
+			</p>
+		</details>
+	</li>
+	<li>
 		<details id="official-icon-already">
 			<summary>Isn't there already an "official" icon for passkeys?
 				<a class="more-anchor-link" href="#official-icon-already"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 
@@ -345,13 +521,21 @@ aria-expanded="false">
 				Ideally, a good icon for this purpose will fit people's typical
 				mental model of what's happening. When non-technical folks are asked
 				about unlocking their device with their face or finger, they don't
-				typically say something like, "my body's biometric uniqueness was
-				the key that unlocked the device". That's <em>literally</em> what's
-				happening, but not how people think about it.
+				typically think something like, "my body's unique biologic
+				characteristics are the key that unlocks the device". Yes, that's
+				<em>literally</em> what's happening, but it's not how people think
+				about it.
 			</p>
 			<p>
-				Instead, they tend to think of it more like, "my device recognized me and unlocked". This "device recognized me" semantic is a much
-				stronger design inspiration than "my body is the key".
+				Instead, they tend to think of it more like, "my device recognized me
+				and unlocked". The <strong>"device recognized me"</strong> semantic
+				is a much stronger design inspiration than <strong>"my body is the
+				key"</strong>.
+			</p>
+			<p>
+				We should lean in that direction when designing a universal icon
+				for passkeys, since we want everyone to <em>feel more naturally
+				trusting</em> of the mechanism.
 			</p>
 		</details>
 	</li>
@@ -360,7 +544,7 @@ aria-expanded="false">
 			<summary>Why not ___ for an icon?
 				<a class="more-anchor-link" href="#why-not-icon"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 
@@ -370,35 +554,47 @@ aria-expanded="false">
 				the goals here.
 			</p>
 			<p>
-				Why not an icon with only a fingerprint? Because <strong>a
+				Why not an icon with ONLY a fingerprint? Because <strong>a
 				lot</strong> of users have newer iOS devices that only use Face
 				ID, and many have never used their fingerprint to unlock their
 				device! Similarly, many Windows users have only ever used
-				Windows Hello (Face ID). But millions of Android users have
-				only ever unlocked their devices with their fingerprint (Touch ID).
+				Windows Hello (e.g., Face ID). But by contrast, millions of
+				Android users have only ever unlocked their devices with their
+				fingerprint (aka Touch ID).
 			</p>
 			<p>
-				The point? We need an icon that doesn't assume fingerprint or face.
-				FIDO skips both in their icon, but... we think we can do better.
+				Further, it seems a commonly held impression of many (especially
+				younger) iOS users, that "fingerprint" unlock is only on "older"
+				iOS devices, since Apple used to have TouchID and later
+				switched exclusively to FaceID. We should be wary of leaning on
+				an icon design that evokes this <em>negative ("older")</em>
+				emotion.
+			<p>
+				The point? <strong>We need an icon that NEITHER assumes <em>only</em>
+				fingerprint or face.</strong>
 			</p>
 			<p>
-				Also, many <em>clever</em> ideas, such as an oval with one half side
+				FIDO notably skips both in their icon -- instead using a generic
+				key and a head/shoulders profile -- but... we think we can do better.
+			</p>
+			<p>
+				Also, <em>clever</em> ideas, such as an oval with one half side
 				as a fingerprint and the other half side as a face, seem really good
-				conceptually, but in execution do not have any legibility or
-				recognizability when the icon is rendered small (under 30px square).
+				conceptually, but in execution lack legibility or recognizability
+				when the icon is rendered small (under 30px square).
 			</p>
 			<p>
-				Icon design is a really tricky skill & art. It's even harder than
+				Icon design is a really tricky skill & art. It's much harder than
 				logo design!
 			</p>
 			<p>
-				If you have ideas that you think will execute better on the goals
-				and vision here, please let us know! Try out your icon by
-				<a href="/">uploading in the garden</a> on this site, and
+				If you have ideas you think will execute better on the goals and
+				vision here, please let us know! Preview your icon by
+				<a href="/">uploading to the garden</a> (only in browser), and
 				<a href="https://github.com/getify/passkey-garden/discussions/1"
-				target="_blank" rel="noopener">share screenshots with us</a> of
-				what it looks like. Your icon might just be chosen by the community
-				as the preferred standard!
+				target="_blank" rel="noopener">then share screenshots with us</a>
+				of what it looks like. Your icon might just be chosen by the
+				community as the preferred standard!
 			</p>
 		</details>
 	</li>
@@ -407,7 +603,7 @@ aria-expanded="false">
 			<summary>I'm a developer, how can I use passkeys?
 				<a class="more-anchor-link" href="#how-to-use-passkeys"
 					aria-role="presentation"
-					aria-label="add this anchor link to browser URL"
+					aria-label="add this anchor link as address bar's URL fragment"
 				>🔗</a>
 			</summary>
 

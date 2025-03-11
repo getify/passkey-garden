@@ -669,6 +669,13 @@ body.append-text .button-set button + u::after {
 #more-questions > li:not(:last-child) {
 	margin-bottom: 3rem;
 }
+#more-questions details p,
+#more-questions details li {
+	line-height: 150%;
+}
+#more-questions ul {
+	list-style-type: disc;
+}
 
 .more-anchor-link {
 	text-decoration: none;
