@@ -1,4 +1,5 @@
 import {
+	prefersReducedMotion,
 	getStyledButton,
 	cancelEvent,
 } from "./util.js";
@@ -67,13 +68,19 @@ function onChangeIcon(evt) {
 		uploadInstructionsEl.classList.remove("hidden");
 		uploadInstructionsEl.setAttribute("aria-expanded","true");
 		uploadInstructionsEl.removeAttribute("aria-hidden");
+		uploadInstructionsEl.scrollIntoView({
+			block: "start",
+			behavior: (prefersReducedMotion() ? "instant" : "smooth"),
+		});
 	}
-	else if (!uploadInstructionsEl.matches(".hidden")) {
-		uploadInstructionsEl.classList.add("hidden");
-		uploadInstructionsEl.setAttribute("aria-expanded","false");
-		uploadInstructionsEl.setAttribute("aria-hidden","true");
-		uploadPreviewImgEl.classList.add("hidden");
-		document.body.style.removeProperty("--icon-url");
+	else {
+		if (!uploadInstructionsEl.matches(".hidden")) {
+			uploadInstructionsEl.classList.add("hidden");
+			uploadInstructionsEl.setAttribute("aria-expanded","false");
+			uploadInstructionsEl.setAttribute("aria-hidden","true");
+			uploadPreviewImgEl.classList.add("hidden");
+			document.body.style.removeProperty("--icon-url");
+		}
 		document.body.classList.remove(...iconOpts);
 		document.body.classList.add(evt.target.value);
 	}

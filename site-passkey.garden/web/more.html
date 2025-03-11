@@ -99,13 +99,13 @@ aria-expanded="false">
 					title="Back To Top"
 				>▲</a>
 			</summary>
+
 			<p>
 				This tool is a simple playground to explore possible improved
 				branding/UX around
 				<a href="https://www.passkeys.com/what-are-passkeys" target="_blank"
-				rel="noopener">
-				biometric passkey (FaceID, TouchID, etc)</a> authentication for web
-				sites/apps.
+				rel="noopener">biometric passkey (FaceID, TouchID, etc)</a>
+				authentication for web sites/apps.
 			</p>
 			<p>
 				You can think of this site as a living style-guide for passkeys.
@@ -240,27 +240,28 @@ aria-expanded="false">
 				</li>
 			</ul>
 			<p>
-				So, why on earth are passkeys going to be any different? This is
-				just another vendor lock-in hype cycle, right?!?
+				So, why on earth are passkeys going to be any different? Is this
+				just another vendor lock-in hype cycle?!?
 			</p>
 			<p>
-				Nope, passkeys really are the solution to all this mess. They
+				Nope, passkeys really <em>ARE</em> the solution to all this mess. They
 				really are the future. They really are <strong>phishing
 				proof</strong>. But how?
 			</p>
 			<details>
 				<summary>
-					<strong>Two key things you need to know about passkeys</strong>
-					that you probably didn't realize...
+					<strong>Two key things about passkeys</strong> that maybe you
+					didn't know...
 				</summary>
 
 				<ol>
 					<li>
 						<p>
-							Even if a scammer tricks you into believing you should give
-							away your account credentials secrets to them, it's
-							<strong>truly impossible</strong> for you to do so. Even if
-							you <em>really want to give them</em> the secrets, you can't.
+							Even if a scammer tricks you into believing you should
+							give away your account credentials secrets to them, it's
+							<strong>truly impossible</strong> for you to do so. Even
+							if you <em>really want to give them</em> the secrets, you
+							can't.
 						</p>
 						<p>
 							Passkeys hide the actual secret in a very secure place on
@@ -270,25 +271,27 @@ aria-expanded="false">
 							<strong>security black box</strong>.
 						</p>
 						<p>
-							Passkeys shift the security/trust mechanism from the server
-							to the client. The server doesn't need your secret to let
-							you into your account. It only needs to know for sure that
-							you can still <em>use</em> (but not share!) your secret.
+							Passkeys shift the security/trust mechanism from the
+							server to the client. The server doesn't need your secret
+							to let you into your account. It only needs to know for
+							sure that you can still <em>use</em> (but not share!)
+							your secret.
 						</p>
 						<p>
 							The server asks a question (a <em>challenge</em>), and the
-							client asks the user to prove who they are with biometrics (Face, Fingerprint, etc). Once the biometric factor is
-							provided, the question/challenge is sent into the black box,
-							and your secret is <em>used</em> to create an answer (a
-							<em>signature</em>) that only your secret could provide,
-							using special math called "public-key cryptography". No,
-							that's <strong>NOT</strong> the "cryptocurrency" (bitcoin,
-							etc) you've heard of!
+							client asks the user to prove who they are with
+							biometrics (Face, Fingerprint, etc). Once the biometric
+							factor is provided, the question/challenge is sent into
+							the black box, and your secret is <em>used</em> to create
+							an answer (a <em>signature</em>) that only your secret
+							could provide, using special math called "public-key
+							cryptography". No, that's <strong>NOT</strong> the
+							"cryptocurrency" (Bitcoin, etc) you've heard of!
 						</p>
 						<p>
 							That answer/signature is sent back to the server, which
-							matches it up to the question/challenge it asked. When they
-							match, you're let into your account. Boom, that's it!
+							matches it up to the question/challenge it asked. When
+							they match, you're let into your account. Boom, that's it!
 						</p>
 						<p>
 							And the important part is, that answer/signature is of no
@@ -301,55 +304,58 @@ aria-expanded="false">
 							math is one-way (can't be reversed).
 						</p>
 						<p>
-							Again, put simply: the scammer/hacker can't get your actual
-							secret because even you don't have access to your secret
-							to give it to them. Your secret is hidden, and can only be
-							<em>used</em> by your device, if your biometric factor
-							matches. <strong>This is about as secure as it gets.</strong>
+							Again, put simply: the scammer/hacker can't get your
+							actual secret because even you don't have access to your
+							secret to give it to them. Your secret is hidden, and can
+							only be <em>used</em> by your device, if your biometric
+							factor matches. <strong>This is about as secure as it
+							gets.</strong>
 						</p>
 					</li>
 					<li>
 						<p>
-							Now, the second piece of the puzzle. You create this secret
-							and store it securely on your device. But what if you get
-							tricked into trying to use this secret by a "man in the
-							middle" attack, where another server shows you a site
-							that <em>looks exactly</em> like the site you want to login
-							to? Can't they then piggyback off your legitimate session
-							and do nefarious things in the background while you do your
-							legitimate stuff?
+							Now, the second piece of the puzzle. You create this
+							secret and store it securely on your device. But what if
+							you get tricked into trying to use this secret by a "man
+							in the middle" attack, where another server shows you a
+							site that <em>looks exactly</em> like the site you want
+							to login to? Can't they then piggyback off your
+							legitimate session and do nefarious things in the
+							background while you do your legitimate stuff?
 						</p>
 						<p>
 							Again, nope! You're safe. The passkey secret you create is
 							absolutely locked to the same origin (domain name, port,
-							protocol, etc), and can <em>never be used</em> for any other
-							origin, no matter how much it might <em>look like</em> the
-							same.
+							protocol, etc), and can <em>never be used</em> for any
+							other origin, no matter how much it might <em>look
+							like</em> the same.
 						</p>
 						<p>
-							<strong>No matter how tricked you as a human may be</strong>,
-							your browser/device will never let you use your passkey on a
-							different site than you initially registered with. Period.
-							Unlike passwords, passkeys are locked to origins, so a
-							scammer/hacker cannot come along and sneak in between later.
+							<strong>No matter how tricked you as a human may
+							be</strong>, your browser/device will never let you use
+							your passkey on a different site than you initially
+							registered with. Period. Unlike passwords, passkeys are
+							locked to origins, so a scammer/hacker cannot come along
+							and sneak in between later.
 						</p>
 						<p>
 							Oh, but... what about the scammer/hacker that tricks you
-							from the <em>very beginning</em>? If they are the middle man
-							all along, they have you completely compromised, right?
+							from the <em>very beginning</em>? If they are the middle
+							man all along, they have you completely compromised,
+							right?
 						</p>
 						<p>
 							Again, nope. When a server is registering the passkey the
 							first time, the origin used when the client prompts the
 							user for their passkey registration, is *locked* into the
-							passkey, and will be locked into every answer/signature the
-							client ever gives back to the server.
+							passkey, and will be locked into every answer/signature
+							the client ever gives back to the server.
 						</p>
 						<p>
-							In short, the <em>server can always tell</em> if an attacker
-							is in the middle, and reject, even from the very first
-							time you sign up. Your bank would never allow such an
-							attack to proceed.
+							In short, the <em>server can always tell</em> if an
+							attacker is in the middle, and reject, even from the very
+							first time you sign up. Your bank would never allow such
+							an attack to proceed.
 						</p>
 					</li>
 				</ol>
@@ -377,25 +383,28 @@ aria-expanded="false">
 			<p>
 				When you register an account using a traditional password, you
 				can usually login to that account immediately, from any device,
-				as long as you remember and enter that password. That's a desired
-				and expected convenience!
+				as long as you remember and enter that password. That's clearly a
+				desired and expected convenience!
 			</p>
 			<p>
 				So how does this work in the world of passkeys, since they seem to
 				be more locked to each specific device?
 			</p>
 			<p>
-				The <strong>SHORT ANSWER</strong> is: YES, by default you have to
-				duplicate setup of each passkey, on each device you use. This is the
-				most secure approach. But the good news is, providers like Google,
-				Apple, and even popular third-party password managers allow
-				a form of passkeys that <em>can be synchronized</em> to your
-				different devices, via providers' cloud servers. However, there
-				<em>are</em> some tradeoffs to this approach.
+				The <strong>SHORT ANSWER</strong> is: by default you <em>DO</em> have
+				to duplicate setup of each new passkey, on each device you use. This
+				is the most secure approach, but it does require a bit more upfront
+				effort to use your passkeys cross-device.
+			</p>
+			<p>
+				But the good news is, providers like Google, Apple, and even popular
+				third-party password managers allow a form of passkeys that <em>can
+				be synchronized</em> to your different devices, via providers' cloud
+				servers. However, there <em>are</em> some tradeoffs to this approach.
 			</p>
 
 			<details>
-				<summary><strong>WANT THE LONGER, DETAILED ANSWER?</strong></summary>
+				<summary><strong>Want the LONGER, DETAILED ANSWER?</strong></summary>
 
 				<p>
 					At its core, passkeys shift the burden of ensuring user identity
@@ -405,11 +414,11 @@ aria-expanded="false">
 					<strong>passkeys are per-device</strong>.
 				</p>
 				<p>
-					If someday you have 50 different online accounts setup with passkeys,
-					and you want to access all those accounts from each of your three
-					devices (phone, tablet, laptop), <strong>YES, you will have to
-					setup all 50 account passkeys on each device</strong>, meaning you'll
-					have 150 unique passkeys.
+					If someday you have 50 different online accounts setup with
+					passkeys, and you want to access all those accounts from each of
+					your three devices (phone, tablet, laptop), <strong>YES, you will
+					have to setup 50 account passkeys on EACH device</strong>,
+					meaning you'll have to setup 150 unique passkeys.
 				</p>
 				<p>
 					That <em>might not sit well</em> with you. Think about the extra
@@ -423,51 +432,55 @@ aria-expanded="false">
 					traditional password-based account setup.
 				</p>
 				<p>
-					That said, most people will not be enthusiastic about this situation.
+					That said, most people will not be enthusiastic about repeating
+					account passkey setup on each of their devices.
 				</p>
 				<p>
-					Per-device passkeys are the new gold standard for account security,
-					but there's no question that it will be a bit less convenient. That
-					friction is a <em>necessary difficulty</em>. But as pointed out
-					above, when given the choice between convenience and security, most
-					everyone chooses convenience, most every time.
+					Per-device passkeys are the new gold standard for account
+					security, but there's no question that it will be a bit less
+					convenient in the multi-device setup scenarios. That friction is
+					a <em>necessary difficulty</em> from a security perspective. But
+					as pointed out above, when given the choice between convenience
+					and security, most everyone chooses convenience, most every time.
 				</p>
 				<p>
-					<strong>So what do we do?</strong> Swear off passkeys and go back to
-					passwords?!?
+					<strong>So what do we do?</strong> Swear off passkeys and go back
+					to insecure passwords?!?
 				</p>
 				<p>
-					Google and Apple both know this reality, accutely. Since these two
-					companies control the vast majority of devices (especially mobile),
-					and indeed the two largest software ecosystems in the world, they're
-					both in a position to meaningfully strike a balance between security
-					and convenience. So they've each responded with a <em>compromise</em>.
+					Google and Apple know this reality, accutely. And since these two
+					companies control the vast majority of devices (especially
+					mobile), and indeed the two largest software ecosystems in the
+					world, they're in a meaningful position to strike a robust
+					balance between security and convenience. So they've moved forward
+					with a <em>compromise</em>.
 				</p>
 				<p>
 					Google (via Android, and the Chrome browser) provides the
 					<a href="https://passwords.google.com/?pli=1" target="_blank"
 					rel="noopener">Google Password Manager</a>. You've likely already
-					used it to store your passwords, credit cards, and other personal info, all conveniently cloud-synchronized to all your devices.
-				</p>
-				<p>
+					used it to store your passwords, credit cards, and other personal
+					 info, all conveniently cloud-synchronized to all your devices.
 					And Apple's <a href="https://support.apple.com/en-us/109016"
-					target="_blank" rel="noopener">iCloud Keychain</a> does the same thing
-					for all your iOS devices.
+					target="_blank" rel="noopener">iCloud Keychain</a> does the same
+					thing for all your iOS devices.
 				</p>
 				<p>
-					Both of these mechanisms now support setting up and synchronizing
-					passkeys across your devices, in much the same way.
+					Both of these mechanisms <strong>now support setting up and
+					synchronizing passkeys across your devices</strong>, in much the
+					same way.
 				</p>
 				<p>
-					Honestly, that's fantastic news! The security of passkeys, with the
-					convenience of automatic cross-device synchronization. Win-win!
+					Honestly, that's fantastic news! The security of passkeys, with
+					the convenience of automatic cross-device synchronization.
+					Win-win!
 				</p>
 				<p>
 					Of course, it <em>is a compromise</em>. Such passkeys are able to
-					be synchronized cross-device because they aren't actually stored
-					in the securest parts of your device/OS, as per-device passkeys are.
-					These synchronized passkeys basically use Google's or Apple's
-					servers as the "secure device authenticator".
+					be synchronized cross-device because they aren't <em>actually
+					stored</em> in the securest parts of the device/OS, as per-device
+					passkeys are. These synchronized passkeys basically use Google's
+					or Apple's servers as the "secure device authenticator".
 				</p>
 				<p>
 					Google and Apple both say that they store this secret information
@@ -487,17 +500,17 @@ aria-expanded="false">
 					target="_blank" rel="noopener">Zero-Knowledge Encryption</a>.
 				</p>
 				<p>
-					But yeah, they're storing <em>some</em> information, like what site
-					and username/email you used to setup each passkey. Is that "tracking"
-					you? <strong>Yes.</strong> More so than if you used a per-device
-					passkey without any cloud synchronization.
+					But yeah, they're storing <em>some</em> meta information, like
+					what site and username/email you used to setup each passkey. Is that "tracking" you? A little bit, <strong>yes.</strong>
+					Certainly more so than if you used a per-device passkey without any cloud synchronization (and thus no tracking).
 				</p>
 				<p>
 					And, a lesser but not unimportant concern is, you cannot use these
 					passkeys locally on your device without a connection to the
-					respective cloud service (Google or Apple). If those were ever down,
-					or you were locked out for some reason, your access to your own
-					passkeys (for all your other accounts) is blocked.
+					respective cloud service (Google or Apple). If those were ever
+					down or unreachable, or you were locked out of your cloud account
+					for some reason, your access to your own passkeys (for all your
+					other accounts) is blocked.
 				</p>
 				<p>
 					You should think very carefully about how you feel about this
@@ -505,8 +518,8 @@ aria-expanded="false">
 					is important, and passwords are no longer a sufficient and durable
 					system for protection. Passkeys are the better solution. But with
 					that extra security, there's a choice to be made: are we going to
-					take our own responsibility (and effort), or are we going to choose
-					the convenience and offload that to Google or Apple?
+					take our own responsibility (and effort), or are we going to
+					choose the convenience and offload that to Google or Apple?
 				</p>
 				<p>
 					We can't make that choice for you. That's up to you. But at least
