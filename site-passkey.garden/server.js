@@ -11,8 +11,12 @@ var httpServer = http.createServer(handleRequest);
 
 var nodeStaticAlias = require("@getify/node-static-alias");
 
+var COOPHeaders = {
+	"Cross-Origin-Opener-Policy": "same-origin",
+	"Cross-Origin-Embedder-Policy": "require-corp",
+};
 var HSTSHeader = {
-	"Strict-Transport-Security": `max-age=${ 1E9 }`,
+	"Strict-Transport-Security": `max-age=${ 1E9 }; includeSubdomains; preload`,
 };
 var noSniffHeader = {
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
@@ -60,6 +64,7 @@ var staticServer = new nodeStaticAlias.Server(STATIC_DIR,{
 	gzip: /^(?:(?:text\/.+)|(?:image\/svg\+xml)|(?:application\/javascript)|(?:application\/json)|(?:application\/manifest\+json))(?:; charset=utf-8)?$/,
 	headers: {
 		...(!DEV ? HSTSHeader : {}),
+		...(!DEV ? COOPHeaders : {}),
 	},
 	onContentType(contentType,headers) {
 		// apparently this is the new preferred mime-type for JS
